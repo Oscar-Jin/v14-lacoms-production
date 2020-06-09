@@ -1,32 +1,62 @@
+// ──────────────────────────────────────────────────────────────── 定数 ───┐
 export const SYNC_STUDENTS = "SYNC_STUDENTS";
 export const SYNC_MEMBERSHIPS = "SYNC_MEMBERSHIPS";
 export const SYNC_SUBSCRIPTIONS = "SYNC_SUBSCRIPTIONS";
-export const SYNC_RESERVATIONS = "SYNC_RESERVATIONS";
 export const SYNC_TICKETS = "SYNC_TICKETS";
-
-// export const ADD_STUDENT = "ADD_STUDENT";
-// export const ADD_MEMBERSHIP = "ADD_MEMBERSHIP";
-// export const ADD_SUBSCRIPTION = "ADD_SUBSCRIPTION";
-// export const ADD_RESERVATION = "ADD_RESERVATION";
-// export const ADD_TICKET = "ADD_TICKET";
-
-// export const UPDATE_STUDENT = "UPDATE_STUDENT";
-// export const UPDATE_MEMBERSHIP = "UPDATE_MEMBERSHIP";
-// export const UPDATE_SUBSCRIPTION = "UPDATE_SUBSCRIPTION";
-// export const UPDATE_RESERVATION = "UPDATE_RESERVATION";
-// export const UPDATE_TICKET = "UPDATE_TICKET";
-
-// export const REMOVE_STUDENT = "REMOVE_STUDENT";
-// export const REMOVE_MEMBERSHIP = "REMOVE_MEMBERSHIP";
-// export const REMOVE_SUBSCRIPTION = "REMOVE_SUBSCRIPTION";
-// export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
-// export const REMOVE_TICKET = "REMOVE_TICKET";
+export const SYNC_RESERVATIONS = "SYNC_RESERVATIONS";
+export const SYNC_PAYMENTS = "SYNC_PAYMENTS";
+// ────────────────────────────────────────────────────────────────────────┘
 
 export const students = (state = [], { type, payload }) => {
   console.log({ type, payload });
 
   switch (type) {
     case SYNC_STUDENTS:
+      return [...payload];
+    default:
+      return state;
+  }
+};
+
+export const memberships = (state = [], { type, payload }) => {
+  switch (type) {
+    case SYNC_MEMBERSHIPS:
+      return [...payload];
+    default:
+      return state;
+  }
+};
+
+export const subscriptions = (state = [], { type, payload }) => {
+  switch (type) {
+    case SYNC_SUBSCRIPTIONS:
+      return [...payload];
+    default:
+      return state;
+  }
+};
+
+export const tickets = (state = [], { type, payload }) => {
+  switch (type) {
+    case SYNC_TICKETS:
+      return [...payload];
+    default:
+      return state;
+  }
+};
+
+export const reservations = (state = [], { type, payload }) => {
+  switch (type) {
+    case SYNC_RESERVATIONS:
+      return [...payload];
+    default:
+      return state;
+  }
+};
+
+export const payments = (state = [], { type, payload }) => {
+  switch (type) {
+    case SYNC_PAYMENTS:
       return [...payload];
     default:
       return state;
