@@ -4,7 +4,7 @@ import "../style/_badgeServer.scss";
 
 const BadgeServer = () => {
   return (
-    <span id={`${fb.name}-server`} className="BadgeServer">
+    <span className="BadgeServer" id={`${fb.name}-server`}>
       {fb.name} server
     </span>
   );

@@ -5,8 +5,41 @@ export const SYNC_SUBSCRIPTIONS = "SYNC_SUBSCRIPTIONS";
 export const SYNC_TICKETS = "SYNC_TICKETS";
 export const SYNC_RESERVATIONS = "SYNC_RESERVATIONS";
 export const SYNC_PAYMENTS = "SYNC_PAYMENTS";
+
+export const UPDATE_USER = "UPDATE_USER";
 // ────────────────────────────────────────────────────────────────────────┘
 
+// ──────────────────────────────────────────────────────────────── 定数 ───┐
+const student = "student";
+const membership = "membership";
+const subscription = "subscription";
+const ticket = "ticket";
+const reservation = "reservation";
+const payment = "payment";
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ──────────────────────────────────────────────────────────────── 変換 ───┐
+export const createAction = doctype => {
+  switch (doctype) {
+    case student:
+      return SYNC_STUDENTS;
+    case membership:
+      return SYNC_MEMBERSHIPS;
+    case subscription:
+      return SYNC_SUBSCRIPTIONS;
+    case ticket:
+      return SYNC_TICKETS;
+    case reservation:
+      return SYNC_RESERVATIONS;
+    case payment:
+      return SYNC_PAYMENTS;
+    default:
+      throw new Error("undefined doctype");
+  }
+};
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ───────────────────────────────────────────────────────────── クラウド ───┐
 export const students = (state = [], { type, payload }) => {
   console.log({ type, payload });
 
@@ -62,3 +95,15 @@ export const payments = (state = [], { type, payload }) => {
       return state;
   }
 };
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ───────────────────────────────────────────────────────────── ローカル ───┐
+export const user = (state = {}, { type, payload }) => {
+  switch (type) {
+    case UPDATE_USER:
+      return payload;
+    default:
+      return state;
+  }
+};
+// ────────────────────────────────────────────────────────────────────────┘

@@ -2,11 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import * as serviceWorker from "./serviceWorker";
-import LoginPage from "./page/LoginPage";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import ReactRouter from "./router/ReactRouter";
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoginPage></LoginPage>
+    <Provider store={store}>
+      <ReactRouter />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

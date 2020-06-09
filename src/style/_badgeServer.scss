@@ -1,13 +1,12 @@
-#dev-server {
+.BadgeServer {
   float: right;
-
-  color: orangered;
   padding: 0.3rem;
 }
 
-#prod-server {
-  float: right;
+#dev-server {
+  color: orangered;
+}
 
+#prod-server {
   color: dodgerblue;
-  padding: 0.3rem;
 }

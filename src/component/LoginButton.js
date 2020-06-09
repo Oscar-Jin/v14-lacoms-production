@@ -16,8 +16,16 @@ const LoginButton = props => {
     connectionStarts();
   };
 
-  const login = <button onClick={signIn}>Login</button>;
-  const connect = <button disabled>Connecting...</button>;
+  const login = (
+    <button className="LogoutButton" onClick={signIn}>
+      Login
+    </button>
+  );
+  const connect = (
+    <button className=" onClick={signIn}" disabled>
+      Connecting...
+    </button>
+  );
 
   return <>{loading ? connect : login}</>;
 };
