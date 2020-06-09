@@ -5,19 +5,26 @@ import "../style/_loginPage.scss";
 import ServerBadge from "../component/BadgeServer";
 
 const heading = "Please Login";
-const tip = "Forgot password? Ask our full-time employee for assistance.";
+const hint = "Forgot password? Ask our full-time employee for assistance.";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const loadingStarts = () => setLoading(true);
-  const loginComplete = () => setLoading(false);
+  const loadingComplete = () => setLoading(false);
 
   const signIn = event => {
     event.preventDefault();
     const email = event.target[0].value;
     const password = event.target[1].value;
+    const tip = document.getElementById("tip");
 
-    auth.signInWithEmailAndPassword(email, password).then(loginComplete);
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(loadingComplete)
+      .catch(error => {
+        tip.innerText = "Error: " + error.code;
+        loadingComplete();
+      });
     loadingStarts();
   };
 
@@ -37,7 +44,7 @@ const LoginPage = () => {
         <input type="password" id="password" placeholder="password:" required />
         {loading ? connect : login}
       </form>
-      <p>{tip}</p>
+      <p id="tip">{hint}</p>
     </div>
   );
 };
