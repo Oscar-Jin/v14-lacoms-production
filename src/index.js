@@ -4,8 +4,6 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import LoginPage from "./page/LoginPage";
 
-import "./style/main.css";
-
 ReactDOM.render(
   <React.StrictMode>
     <LoginPage></LoginPage>
