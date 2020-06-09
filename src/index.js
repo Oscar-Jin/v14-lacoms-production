@@ -2,10 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import * as serviceWorker from "./serviceWorker";
+import LoginPage from "./page/LoginPage";
+
+import "./style/main.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Hello World!</h1>
+    <LoginPage></LoginPage>
   </React.StrictMode>,
   document.getElementById("root")
 );
