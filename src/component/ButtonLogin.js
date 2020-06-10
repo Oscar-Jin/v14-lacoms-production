@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "../firebase/auth";
 
-const LoginButton = props => {
+// depricated
+const ButtonLogin = props => {
   const { email, password } = props;
   // ──────────────────────────────────────────────────────── エラーチェック ───┐
   (!email || !password) && console.error("please provide email and password");
@@ -17,7 +18,7 @@ const LoginButton = props => {
   };
 
   const login = (
-    <button className="LogoutButton" onClick={signIn}>
+    <button className="ButtonLogout" onClick={signIn}>
       Login
     </button>
   );
@@ -30,4 +31,4 @@ const LoginButton = props => {
   return <>{loading ? connect : login}</>;
 };
 
-export default LoginButton;
+export default ButtonLogin;

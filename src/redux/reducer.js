@@ -1,4 +1,4 @@
-// ──────────────────────────────────────────────────────────────── 定数 ───┐
+// ────────────────────────────────────────────────── (action type) 定数 ───┐
 export const SYNC_STUDENTS = "SYNC_STUDENTS";
 export const SYNC_MEMBERSHIPS = "SYNC_MEMBERSHIPS";
 export const SYNC_SUBSCRIPTIONS = "SYNC_SUBSCRIPTIONS";
@@ -7,9 +7,14 @@ export const SYNC_RESERVATIONS = "SYNC_RESERVATIONS";
 export const SYNC_PAYMENTS = "SYNC_PAYMENTS";
 
 export const UPDATE_USER = "UPDATE_USER";
+
+export const FILTER_STUDENT_NAME = "FILTER_STUDENT_NAME";
+export const FILTER_STUDENT_MEMBERSHIP = "FILTER_STUDENT_MEMBERSHIP";
+
+export const SHOW_ADD_STUDENT_MODAL = "SHOW_ADD_STUDENT_MODAL";
 // ────────────────────────────────────────────────────────────────────────┘
 
-// ──────────────────────────────────────────────────────────────── 定数 ───┐
+// ────────────────────────────────────────────────────── (doctype) 定数 ───┐
 const student = "student";
 const membership = "membership";
 const subscription = "subscription";
@@ -102,6 +107,37 @@ export const user = (state = {}, { type, payload }) => {
   switch (type) {
     case UPDATE_USER:
       return payload;
+    default:
+      return state;
+  }
+};
+
+export const filter = (
+  state = {
+    studentName: { a: "あ", b: "か" },
+    studentMembership: null,
+  },
+  { type, payload }
+) => {
+  switch (type) {
+    case FILTER_STUDENT_NAME:
+      return { ...state, studentName: payload };
+    case FILTER_STUDENT_MEMBERSHIP:
+      return { ...state, studentMembership: payload };
+    default:
+      return state;
+  }
+};
+
+export const modal = (
+  state = {
+    showAddStudent: false,
+  },
+  { type, payload }
+) => {
+  switch (type) {
+    case SHOW_ADD_STUDENT_MODAL:
+      return { ...state, showAddStudent: payload };
     default:
       return state;
   }

@@ -1,12 +1,16 @@
 import { createStore, combineReducers } from "redux";
 import {
+  // クラウド
   students,
   memberships,
   subscriptions,
   tickets,
   reservations,
   payments,
+  // ローカル
   user,
+  filter,
+  modal,
 } from "./reducer";
 
 const store = createStore(
@@ -20,6 +24,8 @@ const store = createStore(
     payments,
     // ローカル
     user,
+    filter,
+    modal,
   })
 );
 

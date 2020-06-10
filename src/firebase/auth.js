@@ -1,13 +1,10 @@
 import { fb } from "./config";
 import "firebase/auth";
 import store from "../redux/store";
-import { UPDATE_USER } from "../redux/reducer";
+import { updateUser } from "../redux/action";
 
 export const auth = fb.auth();
 
 auth.onAuthStateChanged(user => {
-  store.dispatch({
-    type: UPDATE_USER,
-    payload: user,
-  });
+  store.dispatch(updateUser(user));
 });
