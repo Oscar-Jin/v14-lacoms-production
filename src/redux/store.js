@@ -10,7 +10,7 @@ import {
   // ローカル
   user,
   filter,
-  modal,
+  show,
 } from "./reducer";
 
 const store = createStore(
@@ -25,7 +25,7 @@ const store = createStore(
     // ローカル
     user,
     filter,
-    modal,
+    show,
   })
 );
 

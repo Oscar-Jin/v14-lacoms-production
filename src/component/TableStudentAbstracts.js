@@ -1,7 +1,9 @@
 import React from "react";
 import useStudentFilter from "../hook/useStudentFilter";
 import { Link } from "react-router-dom";
-import { student$info } from "../router/StudentRouter";
+import { localizeSex } from "../toolkit/localize";
+import ButtonRemoveStudent from "./ButtonRemoveStudent";
+import { student$info } from "../page/StudentPage";
 
 const TableStudentAbstracts = () => {
   const students = useStudentFilter();
@@ -12,6 +14,7 @@ const TableStudentAbstracts = () => {
       firstName_hiragana,
       lastName_kanji,
       firstName_kanji,
+      sex,
       id,
     } = student;
     return (
@@ -24,6 +27,10 @@ const TableStudentAbstracts = () => {
             {lastName_kanji} {firstName_kanji}
           </Link>
         </td>
+        <td>{localizeSex(sex, "short")}</td>
+        <td>
+          <ButtonRemoveStudent id={id} />
+        </td>
       </tr>
     );
   });
@@ -35,6 +42,8 @@ const TableStudentAbstracts = () => {
           <tr>
             <th>--</th>
             <th>----</th>
+            <th>・</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{abstracts}</tbody>

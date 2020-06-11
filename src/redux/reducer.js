@@ -12,6 +12,7 @@ export const FILTER_STUDENT_NAME = "FILTER_STUDENT_NAME";
 export const FILTER_STUDENT_MEMBERSHIP = "FILTER_STUDENT_MEMBERSHIP";
 
 export const SHOW_ADD_STUDENT_MODAL = "SHOW_ADD_STUDENT_MODAL";
+export const SHOW_STUDENT_REMOVE_BUTTON = "SHOW_STUDENT_REMOVE_BUTTON";
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ────────────────────────────────────────────────────── (doctype) 定数 ───┐
@@ -129,15 +130,29 @@ export const filter = (
   }
 };
 
-export const modal = (
-  state = {
-    showAddStudent: false,
-  },
+// export const modal = (
+//   state = {
+//     showAddStudent: false,
+//   },
+//   { type, payload }
+// ) => {
+//   switch (type) {
+//     case SHOW_ADD_STUDENT_MODAL:
+//       return { ...state, showAddStudent: payload };
+//     default:
+//       return state;
+//   }
+// };
+
+export const show = (
+  state = { addStudentModal: false, studentRemoveButton: false },
   { type, payload }
 ) => {
   switch (type) {
     case SHOW_ADD_STUDENT_MODAL:
-      return { ...state, showAddStudent: payload };
+      return { ...state, addStudentModal: payload };
+    case SHOW_STUDENT_REMOVE_BUTTON:
+      return { ...state, studentRemoveButton: payload };
     default:
       return state;
   }

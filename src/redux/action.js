@@ -3,13 +3,20 @@ import {
   FILTER_STUDENT_NAME,
   FILTER_STUDENT_MEMBERSHIP,
   SHOW_ADD_STUDENT_MODAL,
+  SHOW_STUDENT_REMOVE_BUTTON,
 } from "./reducer";
 
-// ───────────────────────────────────────────────────────────── ユーザー ───┐
-export const updateUser = payload => {
+// ──────────────────────────────────────────────────────── エラーチェック ───┐
+const check = payload => {
   if (payload === undefined) {
     throw new Error("you must provide a payload");
   }
+};
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ───────────────────────────────────────────────────────────── ユーザー ───┐
+export const updateUser = payload => {
+  check(payload);
   return {
     type: UPDATE_USER,
     payload,
@@ -19,9 +26,7 @@ export const updateUser = payload => {
 
 // ─────────────────────────────────────────────────────────── フィルター ───┐
 export const filterStudentName = payload => {
-  if (payload === undefined) {
-    throw new Error("you must provide a payload");
-  }
+  check(payload);
   return {
     type: FILTER_STUDENT_NAME,
     payload,
@@ -29,23 +34,25 @@ export const filterStudentName = payload => {
 };
 
 export const filterStudentMembership = payload => {
-  if (payload === undefined) {
-    throw new Error("you must provide a payload");
-  }
+  check(payload);
   return {
     type: FILTER_STUDENT_MEMBERSHIP,
     payload,
   };
 };
 // ────────────────────────────────────────────────────────────────────────┘
-
-// ───────────────────────────────────────────────────────────── モーダル ───┐
 export const showAddStudentModal = payload => {
-  if (payload === undefined) {
-    throw new Error("you must provide a payload");
-  }
+  check(payload);
   return {
     type: SHOW_ADD_STUDENT_MODAL,
+    payload,
+  };
+};
+
+export const showStudentRemove = payload => {
+  check(payload);
+  return {
+    type: SHOW_STUDENT_REMOVE_BUTTON,
     payload,
   };
 };

@@ -1,6 +1,7 @@
 import { fb } from "./config";
 import "firebase/firestore";
 import { parse, sync } from "./firekit";
+import { checkID } from "../toolkit/checker";
 
 export const db = fb.firestore();
 
@@ -14,19 +15,19 @@ const payments = "payments";
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ────────────────────────────────────────────────────────── リファレンス ───┐
-const collections = [
-  db.collection(students),
-  db.collection(memberships),
-  db.collection(subscriptions),
-  db.collection(tickets),
-  db.collection(reservations),
-  db.collection(payments),
-];
+const collections = {
+  students: db.collection(students).orderBy("lastName_hiragana"),
+  memberships: db.collection(memberships),
+  subscriptions: db.collection(subscriptions),
+  tickets: db.collection(tickets),
+  reservations: db.collection(reservations),
+  payments: db.collection(payments),
+};
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ───────────────────────────────────────────────────────────── リスナー ───┐
 export const startListen = () => {
-  const listeners = collections.map(collection =>
+  const listeners = Object.values(collections).map(collection =>
     collection.onSnapshot(qs => {
       let docs = [];
       qs.forEach(doc => docs.push(doc.data()));
@@ -51,16 +52,29 @@ export const startListen = () => {
 // ─────────────────────────────────────────────────────────── CRUD 操作 ───┐
 export const cloudCreate = doc => {
   const { id, doctype } = parse(doc);
-  db.collection(`${doctype}s`).doc(id).set(doc);
+  return db.collection(`${doctype}s`).doc(id).set(doc);
 };
 
 export const cloudUpdate = doc => {
   const { id, doctype } = parse(doc);
-  db.collection(`${doctype}s`).doc(id).update(doc);
+  return db.collection(`${doctype}s`).doc(id).update(doc);
 };
 
 export const cloudDelete = doc => {
   const { id, doctype } = parse(doc);
-  db.collection(`${doctype}s`).doc(id).delete();
+  return db.collection(`${doctype}s`).doc(id).delete();
+};
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ──────────────────────────────────────────────────────────────── 検索 ───┐
+export const deleteDocsMatchUid = id => {
+  const uid = checkID(id);
+
+  Object.values(collections).forEach(collection => {
+    collection
+      .where("uid", "==", uid)
+      .get()
+      .then(qs => qs.forEach(doc => cloudDelete(doc.data())));
+  });
 };
 // ────────────────────────────────────────────────────────────────────────┘
