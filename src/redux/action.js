@@ -4,6 +4,7 @@ import {
   FILTER_STUDENT_MEMBERSHIP,
   SHOW_ADD_STUDENT_MODAL,
   SHOW_STUDENT_REMOVE_BUTTON,
+  TOGGLE_EDIT_STUDENT_MODAL,
 } from "./reducer";
 
 // ──────────────────────────────────────────────────────── エラーチェック ───┐
@@ -41,10 +42,20 @@ export const filterStudentMembership = payload => {
   };
 };
 // ────────────────────────────────────────────────────────────────────────┘
+
+// ────────────────────────────────────────────────────────────── ショー ───┐
 export const showAddStudentModal = payload => {
   check(payload);
   return {
     type: SHOW_ADD_STUDENT_MODAL,
+    payload,
+  };
+};
+
+export const toggleEditStudentModal = payload => {
+  check(payload);
+  return {
+    type: TOGGLE_EDIT_STUDENT_MODAL,
     payload,
   };
 };

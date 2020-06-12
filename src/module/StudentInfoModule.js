@@ -2,22 +2,34 @@ import React from "react";
 import { studentInfoUX, useStudenInfoTypeConverter } from "../ux/studentInfoUX";
 import useCheckoutStudent from "../hook/useCheckoutStudent";
 import "../style/_studentInfoModule.scss";
+import { toggleEditStudentModal } from "../redux/action";
+import EditStudentInfoModal from "../modal/EditStudentInfoModal";
 
 const StudentInfoModule = () => {
-  const [student] = useCheckoutStudent();
+  const [student, dispatch] = useCheckoutStudent();
   const typeConverter = useStudenInfoTypeConverter();
 
-  const edit = event => {};
+  const edit = event => {
+    const referenceKey = event.target.dataset.refkey;
+    const noteReferenceKey = event.target.dataset.noterefkey;
+
+    dispatch(
+      toggleEditStudentModal({
+        editStudentModal: true,
+        referenceKey,
+        noteReferenceKey,
+      })
+    );
+  };
 
   const tableRows = studentInfoUX.map(ux => {
     const { title, subTitle, referenceKey, noteReferenceKey, readOnly } = ux;
-
     return (
       <tr key={referenceKey}>
         <td>
           <span>{title}</span>
-          <span className="subtitle">({subTitle})</span>
-          <p>note:　</p>
+          <span className="subtitle">{subTitle ? `(${subTitle})` : ""}</span>
+          <p>{noteReferenceKey ? "note:　" : "　"}</p>
         </td>
         <td>
           {typeConverter(ux)}
@@ -32,6 +44,7 @@ const StudentInfoModule = () => {
           >
             {readOnly ? "Locked" : "Edit"}
           </button>
+          <p>　</p>
         </td>
       </tr>
     );
@@ -49,6 +62,7 @@ const StudentInfoModule = () => {
         </thead>
         <tbody>{tableRows}</tbody>
       </table>
+      <EditStudentInfoModal />
     </div>
   );
 };

@@ -1,18 +1,25 @@
 .StudentInfoModule {
   table {
-    border-collapse: collapse;
+    // border-collapse: collapse;
   }
   thead {
     text-align: left;
   }
   td {
-    border-top: 1px solid gray;
+    border-top: 1px dashed gray;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
   }
   p {
-    margin: 0.3rem 0rem;
+    margin: 0;
+    margin-top: 0.3rem;
     font-size: 0.9rem;
   }
   .subtitle {
     font-size: 0.9rem;
+    margin-left: 0.3rem;
+  }
+  .notes {
+    max-width: 40rem;
   }
 }

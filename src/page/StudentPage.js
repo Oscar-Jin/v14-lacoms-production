@@ -19,7 +19,7 @@ const StudentPage = () => {
     findStudent(state, id)
   );
 
-  return (
+  return lastName_kanji ? (
     <div className="StudentPage">
       <h1 style={{ display: "inline-block", paddingRight: "1rem" }}>
         {lastName_kanji} {firstName_kanji}
@@ -41,6 +41,8 @@ const StudentPage = () => {
         <Route path={student$payment + ":id"} />
       </Switch>
     </div>
+  ) : (
+    <div />
   );
 };
 

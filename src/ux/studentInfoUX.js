@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import useCheckoutStudent from "../hook/useCheckoutStudent";
 import { localizeSex } from "../toolkit/localize";
 
@@ -6,9 +7,11 @@ import { localizeSex } from "../toolkit/localize";
 export const $dataType = {
   text: "text",
   sex: "sex",
+  birthdate: "birthdate",
   phoneNumber: "phoneNumber",
   email: "email",
   url: "url",
+  notes: "notes",
 };
 // ────────────────────────────────────────────────────────────────────────┘
 
@@ -30,6 +33,13 @@ export const useStudenInfoTypeConverter = () => {
         return (
           <span className="sex">{localizeSex(student[referenceKey])}</span>
         );
+      case $dataType.birthdate:
+        const iso8601 = student[referenceKey];
+        const birthdate = iso8601
+          ? moment(iso8601).format("YYYY年MM月DD日")
+          : "";
+        return <span className="birthdate">{birthdate}</span>;
+
       case $dataType.phoneNumber:
         return <span className="phoneNumber">{student[referenceKey]}</span>;
       case $dataType.email:
@@ -48,11 +58,92 @@ export const useStudenInfoTypeConverter = () => {
             {student[referenceKey]}
           </a>
         );
+      case $dataType.notes:
+        return <p className="notes">{student[referenceKey]}</p>;
+
       default:
         console.warn("unefined dataType. will default to text");
         return <span className="text">{student[referenceKey]}</span>;
     }
   };
+};
+
+export const switchInputType = (dataType, subject, updateSubject) => {
+  switch (dataType) {
+    case $dataType.text:
+      return (
+        <input
+          type="text"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        />
+      );
+    case $dataType.sex:
+      return (
+        <select value={subject} autoComplete="off" onChange={updateSubject}>
+          <option value={"male"}>male (男性)</option>
+          <option value={"female"}>female (女性)</option>
+          <option value={"other"}>other (その他)</option>
+        </select>
+      );
+    case $dataType.birthdate:
+      return (
+        <input
+          type="date"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        />
+      );
+    case $dataType.phoneNumber:
+      return (
+        <input
+          type="tel"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        />
+      );
+    case $dataType.email:
+      return (
+        <input
+          type="email"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        />
+      );
+    case $dataType.url:
+      return (
+        <input
+          type="url"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        />
+      );
+    case $dataType.notes:
+      return (
+        <textarea
+          cols="30"
+          rows="5"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        ></textarea>
+      );
+
+    default:
+      return (
+        <input
+          type="text"
+          value={subject}
+          autoComplete="off"
+          onChange={updateSubject}
+        />
+      );
+  }
 };
 // ────────────────────────────────────────────────────────────────────────┘
 
@@ -95,6 +186,13 @@ export const studentInfoUX = [
     referenceKey: "sex",
     noteReferenceKey: "sex_teacherNote",
     dataType: $dataType.sex,
+  },
+  {
+    title: "誕生日",
+    subTitle: "",
+    referenceKey: "birthdate",
+    noteReferenceKey: "birthdate_teacherNote",
+    dataType: $dataType.birthdate,
   },
   {
     title: "電話",
@@ -140,16 +238,23 @@ export const studentInfoUX = [
   },
   {
     title: "相談記録用紙",
-    subTitle: "リンク",
+    subTitle: "",
     referenceKey: "soudanKirokuYoushi",
     noteReferenceKey: "soudanKirokuYoushi_teacherNote",
     dataType: $dataType.url,
   },
   {
     title: "入会申込書",
-    subTitle: "リンク",
+    subTitle: "",
     referenceKey: "nyukaiMoushikomiSho",
     noteReferenceKey: "nyukaiMoushikomiSho_teacherNote",
     dataType: $dataType.url,
+  },
+  {
+    title: "その他",
+    subTitle: "メモ",
+    referenceKey: "notes",
+    noteReferenceKey: "",
+    dataType: $dataType.notes,
   },
 ];

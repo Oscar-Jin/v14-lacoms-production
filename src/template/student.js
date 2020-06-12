@@ -18,8 +18,8 @@ export const _kinchan = {
 
   createdOn: new Date().toISOString(),
   updatedOn: new Date().toISOString(),
-  createdBy: "administrator",
-  updatedBy: "administrator",
+  createdBy: "lacoms",
+  updatedBy: "lacoms",
   doctype: "student",
   uid: "mhaXdrZT4jP5T8vBxuvm75",
   id: "mhaXdrZT4jP5T8vBxuvm75",

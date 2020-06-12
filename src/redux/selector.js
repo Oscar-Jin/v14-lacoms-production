@@ -8,6 +8,14 @@ export const selectPayments = state => state.payments;
 export const selectStudentFilter = state => state.filter.studentName;
 export const selectMembershipsFilter = state => state.filter.studentMembership;
 export const selectShowAddStudentModal = state => state.show.addStudentModal;
+export const selectShowEditStudentModalBundle = state => {
+  const { editStudentModal, referenceKey, noteReferenceKey } = state.show;
+  return {
+    editStudentModal,
+    referenceKey,
+    noteReferenceKey,
+  };
+};
 export const selectShowStudentRemove = state => state.show.studentRemoveButton;
 
 export const findStudent = (state, id) =>
