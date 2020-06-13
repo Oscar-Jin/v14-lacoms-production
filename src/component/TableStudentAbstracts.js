@@ -2,7 +2,7 @@ import React from "react";
 import useStudentFilter from "../hook/useStudentFilter";
 import { Link } from "react-router-dom";
 import { localizeSex } from "../toolkit/localize";
-import ButtonRemoveStudent from "./ButtonRemoveStudent";
+import ButtonRemoveStudent from "../button/StudentRemoveButton";
 import { student$info } from "../page/StudentPage";
 
 const TableStudentAbstracts = () => {

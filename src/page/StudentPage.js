@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { findStudent } from "../redux/selector";
 import { NavLink, Switch, Route, useParams } from "react-router-dom";
 import StudentInfoModule from "../module/StudentInfoModule";
+import StudentMembershipModule from "../module/StudentMembershipModule";
 
 // ──────────────────────────────────────────────────────────────── パス ───┐
 export const student$info = "/student/info/";
@@ -34,7 +35,10 @@ const StudentPage = () => {
       </span>
       <Switch>
         <Route path={student$info + ":id"} component={StudentInfoModule} />
-        <Route path={student$membership + ":id"} />
+        <Route
+          path={student$membership + ":id"}
+          component={StudentMembershipModule}
+        />
         <Route path={student$subscription + ":id"} />
         <Route path={student$ticket + ":id"} />
         <Route path={student$reservation + ":id"} />

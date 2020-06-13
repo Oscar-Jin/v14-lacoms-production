@@ -1,12 +1,12 @@
 import React from "react";
 import FilterNames from "../component/FilterNames";
 import TableStudentAbstracts from "../component/TableStudentAbstracts";
-import ButtonAddStudent from "../component/ButtonAddStudent";
 
 import "../style/_homePage.scss";
 import AddStudentModal from "../modal/AddStudentModal";
-import ButtonShowRemoveStudent from "../component/ButtonShowRemoveStudent";
+import ButtonShowRemoveStudent from "../button/StudentShowRemoveButton";
 import BadgeStudentCalcs from "../component/BadgeStudentCalcs";
+import ButtonAddStudent from "../button/StudentAddButton";
 
 const HomePage = () => {
   return (
@@ -14,9 +14,10 @@ const HomePage = () => {
       <FilterNames />
       <BadgeStudentCalcs />
       <ButtonShowRemoveStudent />
+
       <TableStudentAbstracts />
-      {/* <p>計X名</p> */}
       <ButtonAddStudent />
+
       <AddStudentModal />
     </div>
   );

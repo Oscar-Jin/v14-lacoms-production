@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, NavLink, Switch, Route } from "react-router-dom";
-import ButtonLogout from "../component/ButtonLogout";
+import ButtonLogout from "../button/LogoutButton";
 import BadgeServer from "../component/BadgeServer";
 import "../style/_reactRouter.scss";
 import LoginPage from "../page/LoginPage";

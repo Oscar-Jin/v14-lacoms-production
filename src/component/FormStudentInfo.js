@@ -7,7 +7,7 @@ import useCheckoutStudent from "../hook/useCheckoutStudent";
 import trim from "lodash/trim";
 import { cloudUpdate } from "../firebase/firestore";
 
-const FormStudentInfoEdit = props => {
+const FormStudentInfo = props => {
   const { close } = props;
   const { referenceKey, noteReferenceKey } = useSelector(
     selectShowEditStudentModalBundle
@@ -89,4 +89,4 @@ const FormStudentInfoEdit = props => {
   );
 };
 
-export default FormStudentInfoEdit;
+export default FormStudentInfo;

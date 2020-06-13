@@ -39,7 +39,6 @@ export const useStudenInfoTypeConverter = () => {
           ? moment(iso8601).format("YYYY年MM月DD日")
           : "";
         return <span className="birthdate">{birthdate}</span>;
-
       case $dataType.phoneNumber:
         return <span className="phoneNumber">{student[referenceKey]}</span>;
       case $dataType.email:
@@ -120,6 +119,7 @@ export const switchInputType = (dataType, subject, updateSubject) => {
           type="url"
           value={subject}
           autoComplete="off"
+          placeholder="https://"
           onChange={updateSubject}
         />
       );

@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { selectShowEditStudentModalBundle } from "../redux/selector";
 import { TOGGLE_EDIT_STUDENT_MODAL } from "../redux/reducer";
-import FormStudentInfoEdit from "../component/FormStudentInfoEdit";
+import FormStudentInfo from "../component/FormStudentInfo";
 
 const style = {
   content: {
@@ -38,7 +38,7 @@ const EditStudentInfoModal = () => {
         isOpen={editStudentModal}
         style={style}
       >
-        <FormStudentInfoEdit close={close} />
+        <FormStudentInfo close={close} />
         <button onClick={close}>x</button>
       </Modal>
     </div>

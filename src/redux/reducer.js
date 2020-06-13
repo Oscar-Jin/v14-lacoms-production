@@ -12,6 +12,7 @@ export const FILTER_STUDENT_NAME = "FILTER_STUDENT_NAME";
 export const FILTER_STUDENT_MEMBERSHIP = "FILTER_STUDENT_MEMBERSHIP";
 
 export const SHOW_ADD_STUDENT_MODAL = "SHOW_ADD_STUDENT_MODAL";
+export const SHOW_ADD_MEMBERSHIP_MODAL = "SHOW_ADD_MEMBERSHIP_MODAL";
 export const SHOW_STUDENT_REMOVE_BUTTON = "SHOW_STUDENT_REMOVE_BUTTON";
 
 export const TOGGLE_EDIT_STUDENT_MODAL = "TOGGLE_EDIT_STUDENT_MODAL";
@@ -136,15 +137,16 @@ export const show = (
   state = {
     addStudentModal: false,
     editStudentModal: false,
+    addMembershipModal: false,
     studentRemoveButton: false,
-    // referenceKey: "",
-    // noteReferenceKey: "",
   },
   { type, payload }
 ) => {
   switch (type) {
     case SHOW_ADD_STUDENT_MODAL:
       return { ...state, addStudentModal: payload };
+    case SHOW_ADD_MEMBERSHIP_MODAL:
+      return { ...state, addMembershipModal: payload };
     case TOGGLE_EDIT_STUDENT_MODAL:
       // editStudentModal: false,
       // referenceKey: "...",

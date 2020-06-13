@@ -1,3 +1,5 @@
+import short from "short-uuid";
+
 export const _kinchan = {
   lastName_hiragana: "きん",
   firstName_hiragana: "ちにん",
@@ -25,7 +27,46 @@ export const _kinchan = {
   id: "mhaXdrZT4jP5T8vBxuvm75",
 };
 
-// ────────────────────────────────────────────────────────────── field ───┐
+// ──────────────────────────────────────────────────────────────── 生成 ───┐
+export const createStudentWith = payload => {
+  const {
+    lastName_kanji,
+    firstName_kanji,
+    lastName_hiragana,
+    firstName_hiragana,
+    // defaults, placed for future override
+    createdBy = "lacoms",
+    updatedBy = "lacoms",
+  } = payload;
+
+  if (
+    !lastName_kanji &&
+    !firstName_kanji &&
+    !lastName_kanji &&
+    !firstName_kanji
+  ) {
+    throw new Error("createStudentWith does not have enough payloads.");
+  }
+
+  const id = short.generate();
+  return {
+    lastName_kanji,
+    firstName_kanji,
+    lastName_hiragana,
+    firstName_hiragana,
+
+    createdOn: new Date().toISOString(),
+    updatedOn: new Date().toISOString(),
+    createdBy,
+    updatedBy,
+    doctype: "student",
+    uid: id,
+    id,
+  };
+};
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ─────────────────────────────────────────────────────────── オプション ───┐
 export const createdBy = {
   lacoms: "lacoms",
   student: "student",

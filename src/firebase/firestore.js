@@ -17,7 +17,7 @@ const payments = "payments";
 // ────────────────────────────────────────────────────────── リファレンス ───┐
 const collections = {
   students: db.collection(students).orderBy("lastName_hiragana"),
-  memberships: db.collection(memberships),
+  memberships: db.collection(memberships).orderBy("iso8601"),
   subscriptions: db.collection(subscriptions),
   tickets: db.collection(tickets),
   reservations: db.collection(reservations),
@@ -39,8 +39,8 @@ export const startListen = () => {
     listeners.forEach(unsubscribe => {
       unsubscribe();
     });
-    console.warn("20sec passed, listeners unsubscribed");
-  }, 20000);
+    console.warn("30sec passed, listeners unsubscribed");
+  }, 30000);
 
   return () => {
     listeners.forEach(unsubscribe => unsubscribe());
@@ -77,4 +77,8 @@ export const deleteDocsMatchUid = id => {
       .then(qs => qs.forEach(doc => cloudDelete(doc.data())));
   });
 };
+// ────────────────────────────────────────────────────────────────────────┘
+
+// ───────────────────────────────────────────────────────── playground ───┐
+
 // ────────────────────────────────────────────────────────────────────────┘

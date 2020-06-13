@@ -1,0 +1,36 @@
+.StudentMembershipModule {
+}
+
+.MembershipCard {
+  border: 1px dotted gray;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: inline-block;
+  min-width: 13rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+
+  h2 {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+
+  span {
+    margin-right: 1rem;
+  }
+}
+
+.TableMembershipHistory {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td {
+    border: 1px solid gray;
+    padding-right: 2rem;
+  }
+}

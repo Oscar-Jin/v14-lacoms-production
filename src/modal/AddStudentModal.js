@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { selectShowAddStudentModal, selectStudents } from "../redux/selector";
 import { showAddStudentModal } from "../redux/action";
 import { cloudCreate } from "../firebase/firestore";
 
-import short from "short-uuid";
 import { useHistory } from "react-router-dom";
 import { student$info } from "../page/StudentPage";
+import { createStudentWith } from "../template/student";
+import { $status, createMembershipWith } from "../template/membership";
 
-const style = {
+export const style = {
   content: {
     top: "50%",
     left: "50%",
@@ -32,6 +34,7 @@ const AddStudentModal = () => {
   const [firstName_kanji, setFirstName_kanji] = useState("");
   const [lastName_hiragana, setLastName_hiragana] = useState("");
   const [firstName_hiragana, setFirstName_hiragana] = useState("");
+  const [shouldCreateMembership, setCreateMembership] = useState(false);
 
   const hiraganaOnly = /^[\u3040-\u309f]+$/;
   const hasEiji = /[a-zA-Z]/;
@@ -112,27 +115,37 @@ const AddStudentModal = () => {
     checkInput();
   };
 
+  const handleCheck = event => {
+    setCreateMembership(event.target.checked);
+  };
+
   const add = () => {
-    const id = short.generate();
-    const student = {
+    const student = createStudentWith({
       lastName_kanji,
       firstName_kanji,
       lastName_hiragana,
       firstName_hiragana,
-
-      createdOn: new Date().toISOString(),
-      updatedOn: new Date().toISOString(),
-      createdBy: "lacoms",
-      updatedBy: "lacoms",
-      doctype: "student",
-      uid: id,
-      id,
-    };
+    });
 
     cloudCreate(student).then(() => {
       close();
-      history.push(student$info + id);
+      history.push(student$info + student.id);
     });
+
+    if (shouldCreateMembership) {
+      const membership = createMembershipWith({
+        lastName_kanji,
+        firstName_kanji,
+        lastName_hiragana,
+        firstName_hiragana,
+
+        uid: student.id,
+        iso8601: moment().format("YYYY-MM-DD"),
+        status: $status.active,
+        isInital: true,
+      });
+      cloudCreate(membership);
+    }
   };
 
   const close = () => {
@@ -241,6 +254,14 @@ const AddStudentModal = () => {
             </tr>
           </tbody>
         </table>
+        <div>
+          <input
+            type="checkbox"
+            checked={shouldCreateMembership}
+            onChange={handleCheck}
+          />
+          <label>Issue new membership (新規入会)</label>
+        </div>
         <div style={{ minHeight: "4rem", color: "red", fontSize: "0.9rem" }}>
           <p id="bot"></p>
           {showOverride && (
