@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { cloudCreate } from "../firebase/firestore";
-import { kinchanTicket, createTicketWith, $type } from "../template/ticket";
+import { createTicketWith, $type } from "../template/ticket";
 import { useSelector } from "react-redux";
 import { findStudent } from "../redux/selector";
 import { useParams } from "react-router-dom";

@@ -5,7 +5,7 @@ import short from "short-uuid";
 export const $plan = {
   none: "none",
   standard: "standard",
-  starndardPlus: "starndardPlus",
+  standardPlus: "standardPlus",
   fast: "fast",
   extremelyFast: "extremelyFast",
 };

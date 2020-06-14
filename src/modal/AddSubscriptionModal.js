@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
 import moment from "moment";
 import { style } from "./AddStudentModal";
@@ -68,8 +68,8 @@ const AddSubscriptionModal = () => {
             <option value={$plan.standard}>
               {localizePlan($plan.standard)}
             </option>
-            <option value={$plan.starndardPlus}>
-              {localizePlan($plan.starndardPlus)}
+            <option value={$plan.standardPlus}>
+              {localizePlan($plan.standardPlus)}
             </option>
             <option value={$plan.fast}>{localizePlan($plan.fast)}</option>
             <option value={$plan.extremelyFast}>

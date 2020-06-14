@@ -32,7 +32,12 @@
 
 .BundleTicketVendor {
   margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   padding: 0.5rem;
   border: 1px dashed gray;
+
+  td {
+    padding: 0.5rem;
+    border: 1px solid whitesmoke;
+  }
 }

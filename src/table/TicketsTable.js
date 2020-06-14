@@ -46,12 +46,11 @@ const createMonthArray = tickets => {
   let array = [iso8601];
 
   tickets.forEach(ticket => {
-    if (ticket.iso8601 !== iso8601) {
+    if (!array.includes(ticket.iso8601)) {
       iso8601 = ticket.iso8601;
       array.push(iso8601);
     }
   });
-
   console.log(array);
 
   return array;

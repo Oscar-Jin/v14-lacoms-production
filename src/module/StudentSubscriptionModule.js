@@ -243,9 +243,9 @@ const useShouldDisablePlanChange = btnType => {
           ? true
           : false
         : true;
-    case $plan.starndardPlus:
+    case $plan.standardPlus:
       return latest.plan
-        ? latest.plan === $plan.starndardPlus
+        ? latest.plan === $plan.standardPlus
           ? true
           : false
         : true;
@@ -273,7 +273,7 @@ const useChangePlanTo = plan => {
   if (
     plan !== $plan.none &&
     plan !== $plan.standard &&
-    plan !== $plan.starndardPlus &&
+    plan !== $plan.standardPlus &&
     plan !== $plan.fast &&
     plan !== $plan.extremelyFast
   ) {
@@ -296,7 +296,7 @@ export const localizePlan = (plan, option) => {
       return "Pause / Halt (授業料止め)";
     case $plan.standard:
       return "Standard（4）";
-    case $plan.starndardPlus:
+    case $plan.standardPlus:
       return "Standard Plus（6）";
     case $plan.fast:
       return "Fast（8）";
@@ -329,7 +329,7 @@ const ChangeSubscriptionButtonGroup = () => {
   return (
     <div className="ChangeSubscriptionButtonGroup">
       <ButtonChangeSubscripton plan={$plan.standard} />
-      <ButtonChangeSubscripton plan={$plan.starndardPlus} />
+      <ButtonChangeSubscripton plan={$plan.standardPlus} />
       <ButtonChangeSubscripton plan={$plan.fast} />
       <ButtonChangeSubscripton plan={$plan.extremelyFast} />
       <ButtonChangeSubscripton plan={$plan.none} />

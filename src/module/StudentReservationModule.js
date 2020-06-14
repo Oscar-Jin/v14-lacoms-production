@@ -1,16 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { filterReservations } from "../redux/selector";
-import { memberships } from "../redux/reducer";
+// import { useParams } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { filterReservations } from "../redux/selector";
+
 import construction1 from "../asset/construction1.png";
 
 const StudentReservationModule = () => {
-  const { id } = useParams();
-  const reservations = useSelector(state => filterReservations(state, id));
+  // const { id } = useParams();
+  // const reservations = useSelector(state => filterReservations(state, id));
 
-  const initialReservation = {};
-  const latestReservation = {};
+  // const initialReservation = {};
+  // const latestReservation = {};
 
   return (
     <div className="StudentReservationModule">
