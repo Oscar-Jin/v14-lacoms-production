@@ -20,8 +20,12 @@ const ButtonCancelMembership = () => {
   const cancel = () => {
     if (isSameMonth) {
       const latest = clone(last(memberships));
-
       latest.status = $status.cancelled;
+
+      window.confirm(
+        "本当にステータスを退会にしますか？この操作は後戻しできません。This operation is destructive and cannot be recovered"
+      );
+
       cloudUpdate(latest);
     }
   };

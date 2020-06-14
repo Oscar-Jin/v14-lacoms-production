@@ -1,0 +1,20 @@
+.TableStudentAbstracts {
+  table {
+    margin-top: 1rem;
+    border-collapse: collapse;
+  }
+
+  th {
+    font-size: 0.8rem;
+  }
+
+  tr {
+    border: 1px solid whitesmoke;
+  }
+
+  td {
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

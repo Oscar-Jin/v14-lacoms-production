@@ -31,7 +31,7 @@ const StudentInfoModule = () => {
           <span className="subtitle">{subTitle ? `(${subTitle})` : ""}</span>
           <p>{noteReferenceKey ? "note:　" : "　"}</p>
         </td>
-        <td>
+        <td className="main-content">
           {typeConverter(ux)}
           <p>{student[noteReferenceKey]}　</p>
         </td>

@@ -1,0 +1,38 @@
+.TableTickets {
+  th {
+    background-color: whitesmoke;
+  }
+
+  td {
+    padding: 0.5rem;
+    border: 1px solid gray;
+  }
+
+  .blank-row {
+    td {
+      border: none;
+      background-color: whitesmoke;
+    }
+  }
+}
+
+.SingleTicketVendor {
+  padding: 0.5rem;
+  margin-top: 3rem;
+  border: 1px dashed gray;
+
+  span {
+    margin-left: 1rem;
+  }
+}
+
+.ButtonAddSingleTicket {
+  margin-left: 2rem;
+}
+
+.BundleTicketVendor {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 0.5rem;
+  border: 1px dashed gray;
+}

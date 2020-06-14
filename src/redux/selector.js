@@ -10,6 +10,8 @@ export const selectMembershipsFilter = state => state.filter.studentMembership;
 export const selectShowAddStudentModal = state => state.show.addStudentModal;
 export const selectShowAddMembershipModal = state =>
   state.show.addMembershipModal;
+export const selectShowAddSubscriptionModal = state =>
+  state.show.addSubscriptionModal;
 export const selectShowEditStudentModalBundle = state => {
   const { editStudentModal, referenceKey, noteReferenceKey } = state.show;
   return {

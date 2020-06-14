@@ -142,7 +142,7 @@ const AddStudentModal = () => {
         uid: student.id,
         iso8601: moment().format("YYYY-MM-DD"),
         status: $status.active,
-        isInital: true,
+        isInitial: true,
       });
       cloudCreate(membership);
     }

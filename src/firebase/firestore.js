@@ -18,10 +18,10 @@ const payments = "payments";
 const collections = {
   students: db.collection(students).orderBy("lastName_hiragana"),
   memberships: db.collection(memberships).orderBy("iso8601"),
-  subscriptions: db.collection(subscriptions),
-  tickets: db.collection(tickets),
-  reservations: db.collection(reservations),
-  payments: db.collection(payments),
+  subscriptions: db.collection(subscriptions).orderBy("iso8601"),
+  tickets: db.collection(tickets).orderBy("iso8601"),
+  reservations: db.collection(reservations).orderBy("iso8601"),
+  payments: db.collection(payments).orderBy("iso8601"),
 };
 // ────────────────────────────────────────────────────────────────────────┘
 
@@ -39,8 +39,8 @@ export const startListen = () => {
     listeners.forEach(unsubscribe => {
       unsubscribe();
     });
-    console.warn("30sec passed, listeners unsubscribed");
-  }, 30000);
+    console.warn("10sec passed, listeners unsubscribed");
+  }, 10000);
 
   return () => {
     listeners.forEach(unsubscribe => unsubscribe());

@@ -19,15 +19,15 @@ export const localizeSex = (sex, option = long) => {
   }
 };
 
-export const localizeStatus = status => {
+export const localizeStatus = (status, option = long) => {
   switch (status) {
     case $status.active:
-      return "Active Member（会員）";
+      return option === long ? "Active Member（会員）" : "会員";
     case $status.paused:
-      return "Paused（休会）";
+      return option === long ? "Paused（休会）" : "休会";
     case $status.cancelled:
-      return "Cancelled（退会）";
+      return option === long ? "Cancelled（退会）" : "退会";
     default:
-      return "???（不明）";
+      return option === long ? "???（不明）" : "？";
   }
 };

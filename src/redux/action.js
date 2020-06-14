@@ -6,6 +6,7 @@ import {
   SHOW_STUDENT_REMOVE_BUTTON,
   TOGGLE_EDIT_STUDENT_MODAL,
   SHOW_ADD_MEMBERSHIP_MODAL,
+  SHOW_ADD_SUBSCRIPTION_MODAL,
 } from "./reducer";
 
 // ──────────────────────────────────────────────────────── エラーチェック ───┐
@@ -57,6 +58,14 @@ export const showAddMembershipModal = payload => {
   check(payload);
   return {
     type: SHOW_ADD_MEMBERSHIP_MODAL,
+    payload,
+  };
+};
+
+export const showAddSubscriptionModal = payload => {
+  check(payload);
+  return {
+    type: SHOW_ADD_SUBSCRIPTION_MODAL,
     payload,
   };
 };

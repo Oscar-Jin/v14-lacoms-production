@@ -1,6 +1,6 @@
 import React from "react";
 import FilterNames from "../component/FilterNames";
-import TableStudentAbstracts from "../component/TableStudentAbstracts";
+import TableStudentAbstracts from "../table/StudentAbstractTable";
 
 import "../style/_homePage.scss";
 import AddStudentModal from "../modal/AddStudentModal";

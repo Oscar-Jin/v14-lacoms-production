@@ -12,7 +12,7 @@ const ButtonRemoveStudent = props => {
 
   const removeStudent = event => {
     window.confirm(
-      "本当に生徒を削除しますか？この操作は生徒に関連する全ての情報をサーバーから抹消します。後戻しできません。You should not remove student from the server unless this is your last option. It is not recoverable once deleted."
+      "本当に生徒を削除しますか？この操作は生徒に関連する全ての情報をサーバーから抹消します。後戻しできません。You should not remove student from the server unless this is your last option. It cannot be recovered once deleted."
     ) && deleteDocsMatchUid(id);
 
     dispatch(showStudentRemove(false));

@@ -12,6 +12,7 @@ import ButtonActivateMembership from "../button/MembershipActivateButton";
 import ButtonPauseMembership from "../button/MembershipPauseButton";
 import { localizeStatus } from "../toolkit/localize";
 import ButtonCancelMembership from "../button/MembershipCancelButton";
+import { $status } from "../template/membership";
 
 const StudentMembershipModule = () => {
   const { id } = useParams();
@@ -30,10 +31,28 @@ const StudentMembershipModule = () => {
   return (
     <div className="StudentMembershipModule">
       {latest.id ? (
-        diffInMonth ? (
+        latest.status === $status.cancelled ? (
+          <div className="MembershipCard">
+            <h2>ご退会されました　Cancelled</h2>
+            <h3>
+              from{" "}
+              {initial ? moment(initial.iso8601).format("YYYY-MM") : "unknow"}{" "}
+              to {moment(latest.iso8601).format("YYYY-MM")}
+            </h3>
+            <p>
+              在籍期間：
+              {initial
+                ? moment(latest.iso8601).diff(
+                    moment(initial.iso8601),
+                    "months"
+                  ) + "ヶ月"
+                : "unknown"}
+            </p>
+          </div>
+        ) : diffInMonth ? (
           <div className="MembershipCard">
             <h2>Membership is Outdated</h2>
-            <p>Please Renew the membership by clicking the add button below</p>
+            <p>Please renew the membership by clicking the add button below</p>
             <p>
               {moment(latest.iso8601).format("M月ステータス：")}{" "}
               {localizeStatus(latest.status)}
@@ -43,10 +62,10 @@ const StudentMembershipModule = () => {
           <>
             <div className="MembershipCard">
               <h2> {localizeStatus(latest.status)}</h2>
-              <span>{moment(latest.iso8601).format("M月現在")}</span>
+              <span>{moment(latest.iso8601).format("YYYY年M月")}</span>
               <div>
                 <span>
-                  since :{" "}
+                  since :
                   {initial
                     ? moment(initial.iso8601).format("YYYY-MM")
                     : "unknown"}
@@ -59,8 +78,8 @@ const StudentMembershipModule = () => {
             <ButtonActivateMembership />
             <ButtonPauseMembership />
             <ButtonCancelMembership />
-            <p className="subtitle">
-              ステータスを変更した場合、サブスクリプション（授業料）の変更も必ず行ってください。
+            <p>
+              ※ステータスを変更した場合、サブスクリプション（授業料）の変更も必ず行ってください。
             </p>
           </>
         )
@@ -70,7 +89,7 @@ const StudentMembershipModule = () => {
 
       {memberships.length ? (
         <div className="TableMembershipHistory">
-          <h3>Past Memberships（会員履歴）</h3>
+          <h3>Membership History（会員履歴）</h3>
           <table>
             <tbody>
               {memberships.map(membership => {
@@ -79,7 +98,10 @@ const StudentMembershipModule = () => {
                   <tr key={id}>
                     <td>{moment(iso8601).format("YYYY-MM")}</td>
                     <td>{localizeStatus(status)}</td>
-                    <td>{isInitial ? "ご入会日🌸" : "　"}</td>
+                    <td>{isInitial ? "入会月🌸" : "　"}</td>
+                    <td>
+                      <button disabled>編集する</button>
+                    </td>
                   </tr>
                 );
               })}
@@ -90,12 +112,16 @@ const StudentMembershipModule = () => {
         <div />
       )}
 
-      <button onClick={handleAdd}>+ Add</button>
+      <button
+        onClick={handleAdd}
+        disabled={latest && latest.status === $status.cancelled}
+      >
+        + Add
+      </button>
       {memberships.length ? (
         <p className="subtitle">
           *If you think you screwed up, please do not hesitate to ask kinchan
-          for help. If kinchan has departed already, now I assure you you
-          screwed up real bad :)
+          for help. If kinchan is no longer here, yeah you screwed up...
         </p>
       ) : (
         <div />

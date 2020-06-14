@@ -8,6 +8,7 @@ import useCloudSubscribe from "../hook/useCloudSubscribe";
 import NotFoundPage from "../page/404Page";
 import HomePage from "../page/HomePage";
 import StudentPage from "../page/StudentPage";
+import "../style/_main.scss";
 
 // ──────────────────────────────────────────────────────────────── パス ───┐
 const home = "/";

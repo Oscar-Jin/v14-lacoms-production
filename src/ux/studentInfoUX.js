@@ -81,6 +81,7 @@ export const switchInputType = (dataType, subject, updateSubject) => {
     case $dataType.sex:
       return (
         <select value={subject} autoComplete="off" onChange={updateSubject}>
+          <option value="" disabled></option>
           <option value={"male"}>male (男性)</option>
           <option value={"female"}>female (女性)</option>
           <option value={"other"}>other (その他)</option>

@@ -1,9 +1,14 @@
 import React from "react";
+import moment from "moment";
 import { useSelector } from "react-redux";
 import { findStudent } from "../redux/selector";
 import { NavLink, Switch, Route, useParams } from "react-router-dom";
 import StudentInfoModule from "../module/StudentInfoModule";
 import StudentMembershipModule from "../module/StudentMembershipModule";
+import StudentPaymentModule from "../module/StudentPaymentModule";
+import StudentSubscriptionModule from "../module/StudentSubscriptionModule";
+import StudentReservationModule from "../module/StudentReservationModule";
+import StudentTicketModule from "../module/StudentTicketModule";
 
 // ──────────────────────────────────────────────────────────────── パス ───┐
 export const student$info = "/student/info/";
@@ -16,7 +21,7 @@ export const student$payment = "/student/payment/";
 
 const StudentPage = () => {
   const { id } = useParams();
-  const { lastName_kanji, firstName_kanji } = useSelector(state =>
+  const { lastName_kanji, firstName_kanji, birthdate } = useSelector(state =>
     findStudent(state, id)
   );
 
@@ -25,6 +30,9 @@ const StudentPage = () => {
       <h1 style={{ display: "inline-block", paddingRight: "1rem" }}>
         {lastName_kanji} {firstName_kanji}
       </h1>
+      <span style={{ marginRight: "1rem" }}>
+        {birthdate ? moment().diff(moment(birthdate), "years") + "歳" : ""}
+      </span>
       <span>
         <NavLink to={student$info + id}>Info</NavLink>
         <NavLink to={student$membership + id}>Membership</NavLink>
@@ -39,10 +47,19 @@ const StudentPage = () => {
           path={student$membership + ":id"}
           component={StudentMembershipModule}
         />
-        <Route path={student$subscription + ":id"} />
-        <Route path={student$ticket + ":id"} />
-        <Route path={student$reservation + ":id"} />
-        <Route path={student$payment + ":id"} />
+        <Route
+          path={student$subscription + ":id"}
+          component={StudentSubscriptionModule}
+        />
+        <Route path={student$ticket + ":id"} component={StudentTicketModule} />
+        <Route
+          path={student$reservation + ":id"}
+          component={StudentReservationModule}
+        />
+        <Route
+          path={student$payment + ":id"}
+          component={StudentPaymentModule}
+        />
       </Switch>
     </div>
   ) : (
