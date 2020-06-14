@@ -4,6 +4,7 @@ import { auth } from "../firebase/auth";
 import "../style/_loginPage.scss";
 import ServerBadge from "../component/BadgeServer";
 
+const logo = "LACOMS Pole Star";
 const heading = "Please Login";
 const hint = "Forgot password? Ask our full-time employee for assistance.";
 
@@ -33,7 +34,8 @@ const LoginPage = () => {
 
   return (
     <div className="LoginPage">
-      <h1 id="heading">{heading}</h1>
+      <h1 id="heading">{logo}</h1>
+      <h2 id="heading">{heading}</h2>
       <ServerBadge />
       <hr />
 
