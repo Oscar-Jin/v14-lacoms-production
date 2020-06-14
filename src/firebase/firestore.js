@@ -35,12 +35,12 @@ export const startListen = () => {
     })
   );
 
-  setTimeout(() => {
-    listeners.forEach(unsubscribe => {
-      unsubscribe();
-    });
-    console.warn("10sec passed, listeners unsubscribed");
-  }, 10000);
+  // setTimeout(() => {
+  //   listeners.forEach(unsubscribe => {
+  //     unsubscribe();
+  //   });
+  //   console.warn("10sec passed, listeners unsubscribed");
+  // }, 10000);
 
   return () => {
     listeners.forEach(unsubscribe => unsubscribe());

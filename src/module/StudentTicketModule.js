@@ -139,6 +139,8 @@ const ButtonIssueBundledTickets = props => {
 
   const diffInDays = moment(iso8601).diff(moment(), "days");
 
+  console.log(diffInDays);
+
   if (isTicketed) {
     return (
       <button className="ButtonIssueBundledTickets" disabled>

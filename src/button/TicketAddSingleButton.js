@@ -32,7 +32,9 @@ const ButtonAddSingleTicket = props => {
       type: $type.singlePurchase,
     });
 
-    cloudCreate(ticket);
+    if (window.confirm("本当に発券しますか？")) {
+      cloudCreate(ticket);
+    }
   };
 
   return (

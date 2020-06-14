@@ -140,7 +140,7 @@ const AddStudentModal = () => {
         firstName_hiragana,
 
         uid: student.id,
-        iso8601: moment().format("YYYY-MM-DD"),
+        iso8601: moment().date(1).format("YYYY-MM-DD"),
         status: $status.active,
         isInitial: true,
       });

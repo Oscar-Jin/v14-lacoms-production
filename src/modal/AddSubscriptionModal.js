@@ -15,8 +15,8 @@ const AddSubscriptionModal = () => {
   const student = useSelector(state => findStudent(state, id));
   const dispatch = useDispatch();
 
-  const thisMonth = moment();
-  const nextMonth = moment().add(1, "month");
+  const thisMonth = moment().date(1);
+  const nextMonth = moment().date(1).add(1, "month");
 
   const show = useSelector(selectShowAddSubscriptionModal);
 
