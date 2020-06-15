@@ -30,6 +30,7 @@ const ReactRouter = () => {
         <NavLink to={schedule}>Schedule</NavLink>
         <NavLink to={analytics}>Analytics</NavLink>
         <NavLink to={executive}>Executive</NavLink>
+        <span>準備中です</span>
         <ButtonLogout />
         <BadgeServer />
         <hr />
