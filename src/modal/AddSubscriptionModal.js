@@ -75,6 +75,7 @@ const AddSubscriptionModal = () => {
             <option value={$plan.extremelyFast}>
               {localizePlan($plan.extremelyFast)}
             </option>
+            <option value={$plan.none}>{localizePlan($plan.none)}</option>
           </select>
         </div>
         <br />

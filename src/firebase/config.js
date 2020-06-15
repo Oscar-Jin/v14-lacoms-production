@@ -49,7 +49,7 @@ const initialize = mode => {
   }
 };
 
-export const fb = initialize(prodServer);
+export const fb = initialize(devServer);
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ──────────────────────────────────────────────────────────────── 自動 ───┐
