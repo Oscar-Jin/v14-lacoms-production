@@ -5,6 +5,7 @@ import short from "short-uuid";
 export const $type = {
   singlePurchase: "singlePurchase",
   subscriptionBundle: "subscriptionBundle",
+  pastUnused: "pastUnused", // <-- for backwards compatibility
 };
 
 // ────────────────────────────────────────────────────────────────────────┘
@@ -131,6 +132,8 @@ export const localizeType = type => {
       return "きっぷ（補講）";
     case $type.subscriptionBundle:
       return "定期券（プラン）";
+    case $type.pastUnused:
+      return "乗車整理券（システム移行前の未消化分）";
     default:
       throw new Error("type is not defined");
   }
