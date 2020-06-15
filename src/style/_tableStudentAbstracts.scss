@@ -17,4 +17,16 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  .active {
+    background-color: yellowgreen;
+  }
+
+  .paused {
+    background-color: rgb(255, 236, 204);
+  }
+
+  .cancelled {
+    background-color: whitesmoke;
+  }
 }

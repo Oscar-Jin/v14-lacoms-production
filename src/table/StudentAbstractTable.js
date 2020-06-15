@@ -38,7 +38,9 @@ const TableStudentAbstracts = () => {
         </td>
         <td>{localizeSex(sex, "short")}</td>
         <td>{simplifyAge(birthdate)}</td>
-        <td>{localizeStatus(findLatestMembership(id).status, "short")}</td>
+        <td className={findLatestMembership(id).status}>
+          {localizeStatus(findLatestMembership(id).status, "short")}
+        </td>
         <td>
           <ButtonRemoveStudent id={id} />
         </td>
