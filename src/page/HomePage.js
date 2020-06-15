@@ -13,6 +13,7 @@ const HomePage = () => {
     <div className="HomePage">
       <FilterNames />
       <BadgeStudentCalcs />
+
       <ButtonShowRemoveStudent />
 
       <TableStudentAbstracts />

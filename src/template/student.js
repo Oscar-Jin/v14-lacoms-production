@@ -80,4 +80,10 @@ export const updatedBy = {
 export const doctype = {
   student: "student",
 };
+
+export const $sex = {
+  male: "male",
+  female: "female",
+  other: "other",
+};
 // ────────────────────────────────────────────────────────────────────────┘

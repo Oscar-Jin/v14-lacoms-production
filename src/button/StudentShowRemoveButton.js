@@ -13,7 +13,7 @@ const ButtonShowRemoveStudent = () => {
 
   return (
     <button className="ButtonShowRemoveStudent" onClick={show}>
-      {showRemove ? "キャンセル" : "全て表示"}
+      {showRemove ? "キャンセル" : "オプション"}
     </button>
   );
 };

@@ -9,6 +9,7 @@ import NotFoundPage from "../page/404Page";
 import HomePage from "../page/HomePage";
 import StudentPage from "../page/StudentPage";
 import "../style/_main.scss";
+import AnalyticsPage from "../page/AnalyticsPage";
 
 // ──────────────────────────────────────────────────────────────── パス ───┐
 const home = "/";
@@ -37,6 +38,7 @@ const ReactRouter = () => {
         <Switch>
           <Route exact path={home} component={HomePage} />
           <Route path={student} component={StudentPage} />
+          <Route path={analytics} component={AnalyticsPage} />
           {/* Other Routes Not Created Yet */}
           <Route component={NotFoundPage} />
         </Switch>
