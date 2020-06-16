@@ -56,17 +56,13 @@ export const createSubscriptionWith = payload => {
   } = payload;
 
   if (
-    !lastName_kanji &&
-    !firstName_kanji &&
-    !lastName_hiragana &&
-    !firstName_hiragana &&
-    !uid &&
-    !iso8601 &&
-    !plan &&
-    !isPaid &&
-    !isTicketed &&
-    !createdBy &&
-    !updatedBy
+    !lastName_kanji ||
+    !firstName_kanji ||
+    !lastName_hiragana ||
+    !firstName_hiragana ||
+    !uid ||
+    !iso8601 ||
+    !plan
   ) {
     throw new Error(
       "createSubscriptionWith did not receive all the properties it requires"

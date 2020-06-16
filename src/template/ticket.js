@@ -67,17 +67,13 @@ export const createTicketWith = payload => {
   } = payload;
 
   if (
-    !lastName_kanji &&
-    !firstName_kanji &&
-    !lastName_hiragana &&
-    !firstName_hiragana &&
-    !uid &&
-    !iso8601 &&
-    !type &&
-    !willExpire &&
-    !usedOn &&
-    !createdBy &&
-    !updatedBy
+    !lastName_kanji ||
+    !firstName_kanji ||
+    !lastName_hiragana ||
+    !firstName_hiragana ||
+    !uid ||
+    !iso8601 ||
+    !type
   ) {
     throw new Error(
       "createTicketWith did not receive all the properties it requires"

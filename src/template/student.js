@@ -40,9 +40,9 @@ export const createStudentWith = payload => {
   } = payload;
 
   if (
-    !lastName_kanji &&
-    !firstName_kanji &&
-    !lastName_kanji &&
+    !lastName_kanji ||
+    !firstName_kanji ||
+    !lastName_kanji ||
     !firstName_kanji
   ) {
     throw new Error("createStudentWith does not have enough payloads.");

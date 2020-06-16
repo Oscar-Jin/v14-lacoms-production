@@ -49,7 +49,7 @@ const initialize = mode => {
   }
 };
 
-export const fb = initialize(prodServer); // <-- override point ☢️
+export const fb = initialize(devServer); // <-- override point ⚠️
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ──────────────────────────────────────────────────────────────── 自動 ───┐

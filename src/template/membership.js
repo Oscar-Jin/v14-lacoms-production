@@ -50,12 +50,12 @@ export const createMembershipWith = payload => {
   } = payload;
 
   if (
-    !lastName_kanji &&
-    !firstName_kanji &&
-    !lastName_hiragana &&
-    !firstName_hiragana &&
-    !uid &&
-    !iso8601 &&
+    !lastName_kanji ||
+    !firstName_kanji ||
+    !lastName_hiragana ||
+    !firstName_hiragana ||
+    !uid ||
+    !iso8601 ||
     !status
   ) {
     throw new Error(
