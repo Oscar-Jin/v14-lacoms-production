@@ -30,11 +30,11 @@ const BadgeRemainingTickets = props => {
   });
 
   return (
-    <span className="BadgeRemainingTickets">
+    <span className="BadgeRemainingTickets subtitle">
       <span
         style={{
           display: "inline-block",
-          minWidth: "4.5rem",
+          minWidth: "4rem",
           color: "green",
         }}
       >
@@ -43,7 +43,7 @@ const BadgeRemainingTickets = props => {
       <span
         style={{
           display: "inline-block",
-          minWidth: "5.5rem",
+          minWidth: "5rem",
           color: "orange",
         }}
       >
@@ -52,7 +52,6 @@ const BadgeRemainingTickets = props => {
       <span
         style={{
           display: "inline-block",
-
           color: "#50c7c3",
         }}
       >
