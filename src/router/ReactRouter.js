@@ -10,6 +10,7 @@ import HomePage from "../page/HomePage";
 import StudentPage from "../page/StudentPage";
 import "../style/_main.scss";
 import AnalyticsPage from "../page/AnalyticsPage";
+import ExecutivePage from "../page/ExecutivePage";
 
 // ──────────────────────────────────────────────────────────────── パス ───┐
 const home = "/";
@@ -39,6 +40,7 @@ const ReactRouter = () => {
           <Route exact path={home} component={HomePage} />
           <Route path={student} component={StudentPage} />
           <Route path={analytics} component={AnalyticsPage} />
+          <Route path={executive} component={ExecutivePage} />
           {/* Other Routes Not Created Yet */}
           <Route component={NotFoundPage} />
         </Switch>

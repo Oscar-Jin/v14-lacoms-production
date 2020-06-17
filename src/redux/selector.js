@@ -4,6 +4,7 @@ export const selectSubscriptions = state => state.subscriptions;
 export const selectTickets = state => state.tickets;
 export const selectReservations = state => state.reservations;
 export const selectPayments = state => state.payments;
+export const selectTimetables = state => state.timetables;
 
 export const selectStudentFilter = state => state.filter.studentName;
 export const selectMembershipsFilter = state => state.filter.studentMembership;
@@ -24,6 +25,8 @@ export const selectShowStudentRemove = state => state.show.studentRemoveButton;
 
 export const findStudent = (state, id) =>
   state.students.find(student => student.id === id) || {};
+export const findTimetable = (state, id) =>
+  state.timetables.find(timetable => timetable.id === id) || {};
 export const filterMemberships = (state, id) =>
   state.memberships.filter(mbshp => mbshp.uid === id) || [];
 export const filterSubscriptions = (state, id) =>

@@ -1,0 +1,33 @@
+.remove-button {
+  color: red;
+}
+
+.Timetable {
+  padding: 0.5rem;
+
+  h3 {
+    background-color: whitesmoke;
+  }
+}
+
+.weekly-table {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px dashed gray;
+  padding: 0.5rem;
+  margin: 1rem;
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+
+    td {
+    }
+  }
+}
+
+.border-top {
+  td {
+    border-top: 1px solid rgb(190, 190, 190);
+  }
+}

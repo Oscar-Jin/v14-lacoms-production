@@ -121,7 +121,7 @@ const StudentMembershipModule = () => {
       {memberships.length ? (
         <p className="subtitle">
           *If you think you screwed up, please do not hesitate to ask kinchan
-          for help. If kinchan is no longer here, yeah you screwed up for
+          for help. And if kinchan is no longer here, yeah you screwed up for
           real...
         </p>
       ) : (

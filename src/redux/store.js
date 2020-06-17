@@ -7,6 +7,7 @@ import {
   tickets,
   reservations,
   payments,
+  timetables,
   // ローカル
   user,
   filter,
@@ -22,6 +23,7 @@ const store = createStore(
     tickets,
     reservations,
     payments,
+    timetables,
     // ローカル
     user,
     filter,
