@@ -32,14 +32,20 @@ const ButtonAddSingleTicket = props => {
       type: $type.singlePurchase,
     });
 
-    if (window.confirm("本当に発券しますか？")) {
+    if (
+      window.confirm(
+        `本当に「きっぷ（補講）」を１枚発券しますか？ （${moment(
+          monthSelected
+        ).format("M月利用")}）`
+      )
+    ) {
       cloudCreate(ticket);
     }
   };
 
   return (
     <button className="ButtonAddSingleTicket" onClick={add}>
-      一枚発券する
+      発券する
     </button>
   );
 };

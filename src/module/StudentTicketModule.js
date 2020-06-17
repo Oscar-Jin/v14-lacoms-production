@@ -223,7 +223,7 @@ const SingleTicketVendor = () => {
         <option value={thisMonth}>{thisMonth}</option>
         <option value={nextMonth}>{nextMonth}</option>
       </select>
-      <span>{moment(month).format("M月利用")}</span>
+      <span>{moment(month).format("M月利用　きっぷ１枚")}</span>
       <ButtonAddSingleTicket monthSelected={month} />
     </div>
   );
