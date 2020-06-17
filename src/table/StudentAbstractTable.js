@@ -10,6 +10,7 @@ import useFindLatestMembership from "../hook/useFindLatestMembership";
 import "../style/_tableStudentAbstracts.scss";
 import { useSelector } from "react-redux";
 import { selectShowStudentRemove } from "../redux/selector";
+import BadgeRemainingTickets from "../component/BadgeRemainingTickets";
 
 const TableStudentAbstracts = () => {
   const students = useStudentFilter();
@@ -42,6 +43,9 @@ const TableStudentAbstracts = () => {
           {localizeStatus(findLatestMembership(id).status, "short")}
         </td>
         <td>
+          <BadgeRemainingTickets id={id} />
+        </td>
+        <td>
           <ButtonRemoveStudent id={id} />
         </td>
       </tr>
@@ -58,6 +62,7 @@ const TableStudentAbstracts = () => {
             <th>性別</th>
             <th>年齢区分</th>
             <th>ステータス</th>
+            <th>7月利用可能なチケット</th>
             <th>{shouldShowRemove ? "削除" : ""}</th>
           </tr>
         </thead>
