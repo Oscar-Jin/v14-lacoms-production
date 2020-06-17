@@ -18,12 +18,12 @@ const timetables = "timetables";
 
 // ────────────────────────────────────────────────────────── リファレンス ───┐
 const collections = {
-  // students: db.collection(students).orderBy("lastName_hiragana"),
-  // memberships: db.collection(memberships).orderBy("iso8601"),
-  // subscriptions: db.collection(subscriptions).orderBy("iso8601"),
-  // tickets: db.collection(tickets).orderBy("type").orderBy("iso8601"),
-  // reservations: db.collection(reservations).orderBy("iso8601"),
-  // payments: db.collection(payments).orderBy("iso8601"),
+  students: db.collection(students).orderBy("lastName_hiragana"),
+  memberships: db.collection(memberships).orderBy("iso8601"),
+  subscriptions: db.collection(subscriptions).orderBy("iso8601"),
+  tickets: db.collection(tickets).orderBy("type").orderBy("iso8601"),
+  reservations: db.collection(reservations).orderBy("iso8601"),
+  payments: db.collection(payments).orderBy("iso8601"),
   timetables: db.collection(timetables).orderBy("iso8601"),
 };
 // ────────────────────────────────────────────────────────────────────────┘

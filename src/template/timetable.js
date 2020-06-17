@@ -35,8 +35,8 @@ export const julyTimetable = {
   sunday: [],
 
   excludes: [
-    { date: 6, reason: "校内改修工事のため" },
-    { date: 13, reason: "バーベーキューのため" },
+    // { date: 6, reason: "校内改修工事のため" },
+    // { date: 13, reason: "バーベーキューのため" },
   ],
 
   isGenerated: false,

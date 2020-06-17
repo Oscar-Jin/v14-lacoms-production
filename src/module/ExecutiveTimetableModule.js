@@ -3,12 +3,8 @@ import { useState } from "react";
 import "../style/_executiveTimetableModule.scss";
 import { useSelector } from "react-redux";
 import { selectTimetables, findTimetable } from "../redux/selector";
-import { remove } from "lodash";
-import { cloudUpdate } from "../firebase/firestore";
 import ScheduleTable from "../table/ScheduleTable";
 import EditScheduleModal from "../modal/EditScheduleModal";
-
-const clone = require("rfdc")();
 
 // ──────────────────────────────────────────────────────────── オプション ───┐
 export const $daysOfWeek = {
@@ -97,7 +93,13 @@ const Timetable = props => {
         })}
       </div>
 
-      <button disabled={isGenerated} onClick={handleGenerateLessons}>
+      <hr />
+      <button
+        disabled={isGenerated}
+        onClick={handleGenerateLessons}
+        className="
+      fr"
+      >
         {isGenerated ? "確定済" : "確定する"}
       </button>
       <EditScheduleModal
@@ -105,6 +107,7 @@ const Timetable = props => {
         setModalPayload={setModalPayload}
         timetable={timetable}
       />
+      <br />
     </div>
   );
 };
