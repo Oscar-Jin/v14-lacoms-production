@@ -38,7 +38,7 @@ const BadgeRemainingTickets = props => {
           color: "green",
         }}
       >
-        定期：{unusedSubscriptionBundle}
+        {unusedSubscriptionBundle ? `定期：${unusedSubscriptionBundle}` : ""}
       </span>
       <span
         style={{
@@ -47,15 +47,16 @@ const BadgeRemainingTickets = props => {
           color: "orange",
         }}
       >
-        きっぷ：{unusedSinglePurchase}
+        {unusedSinglePurchase ? `きっぷ：${unusedSinglePurchase}` : ""}
       </span>
       <span
         style={{
           display: "inline-block",
+          minWidth: "5rem",
           color: "#50c7c3",
         }}
       >
-        整理券：{unusedPastUnused}
+        {unusedPastUnused ? `整理券：${unusedPastUnused}` : ""}
       </span>
     </span>
   );
