@@ -5,6 +5,7 @@ export const selectTickets = state => state.tickets;
 export const selectReservations = state => state.reservations;
 export const selectPayments = state => state.payments;
 export const selectTimetables = state => state.timetables;
+export const selectLessons = state => state.lessons;
 
 export const selectStudentFilter = state => state.filter.studentName;
 export const selectMembershipsFilter = state => state.filter.studentMembership;

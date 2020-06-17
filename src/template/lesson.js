@@ -78,8 +78,8 @@ export const createLessonWith = payload => {
     instructorName,
     capacity,
     // defaults, can be overwritten
-    createdBy,
-    updatedBy,
+    createdBy = "lacoms",
+    updatedBy = "lacoms",
   } = payload;
 
   if (!iso8601 || !timeString || !lessonName || !instructorName || !capacity) {

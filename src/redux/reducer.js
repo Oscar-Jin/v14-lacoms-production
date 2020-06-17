@@ -6,6 +6,7 @@ export const SYNC_TICKETS = "SYNC_TICKETS";
 export const SYNC_RESERVATIONS = "SYNC_RESERVATIONS";
 export const SYNC_PAYMENTS = "SYNC_PAYMENTS";
 export const SYNC_TIMETABLES = "SYNC_TIMETABLES";
+export const SYNC_LESSONS = "SYNC_LESSONS";
 
 export const UPDATE_USER = "UPDATE_USER";
 
@@ -28,6 +29,7 @@ const ticket = "ticket";
 const reservation = "reservation";
 const payment = "payment";
 const timetable = "timetable";
+const lesson = "lesson";
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ──────────────────────────────────────────────────────────────── 変換 ───┐
@@ -47,6 +49,8 @@ export const createAction = doctype => {
       return SYNC_PAYMENTS;
     case timetable:
       return SYNC_TIMETABLES;
+    case lesson:
+      return SYNC_LESSONS;
     default:
       throw new Error("undefined doctype");
   }
@@ -113,6 +117,15 @@ export const payments = (state = [], { type, payload }) => {
 export const timetables = (state = [], { type, payload }) => {
   switch (type) {
     case SYNC_TIMETABLES:
+      return [...payload];
+    default:
+      return state;
+  }
+};
+
+export const lessons = (state = [], { type, payload }) => {
+  switch (type) {
+    case SYNC_LESSONS:
       return [...payload];
     default:
       return state;

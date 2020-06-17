@@ -1,5 +1,4 @@
 import * as firebase from "firebase/app";
-import { de } from "date-fns/locale";
 
 const dev = {
   apiKey: "AIzaSyAkc8Uf8AEaNihQy2GI2zuWCzb-vNNDuvQ",
@@ -50,7 +49,7 @@ const initialize = mode => {
   }
 };
 
-export const fb = initialize(prodServer); // <-- override point ⚠️
+export const fb = initialize(devServer); // <-- override point ⚠️
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ──────────────────────────────────────────────────────────────── 自動 ───┐

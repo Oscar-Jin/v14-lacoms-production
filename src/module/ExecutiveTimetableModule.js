@@ -1,10 +1,16 @@
 import React from "react";
+import moment from "moment";
 import { useState } from "react";
 import "../style/_executiveTimetableModule.scss";
 import { useSelector } from "react-redux";
 import { selectTimetables, findTimetable } from "../redux/selector";
 import ScheduleTable from "../table/ScheduleTable";
 import EditScheduleModal from "../modal/EditScheduleModal";
+import { cloudCreate, cloudUpdate } from "../firebase/firestore";
+import { createLessonWith } from "../template/lesson";
+import LoadingModal from "../modal/LoadingModal";
+
+const clone = require("rfdc")();
 
 // ──────────────────────────────────────────────────────────── オプション ───┐
 export const $daysOfWeek = {
@@ -57,20 +63,221 @@ const Timetable = props => {
   const { id } = props;
 
   const [modalPayload, setModalPayload] = useState({});
+  const [showLoading, setShowLoading] = useState(false);
 
   const timetable = useSelector(state => findTimetable(state, id));
   const weeks = Object.keys($daysOfWeek);
 
   const { isGenerated } = timetable;
 
+  // ============================= very important code here
   const handleGenerateLessons = () => {
-    window.confirm(
-      "まだ確定できません。必要なモジュールが搭載されていません \n Module Required: <HandleGenerateLessons /> #ac02f31"
-    );
-    // window.confirm(
-    //   "本当に確定しますか？確定したら、再度時間割を編集することはできません。"
-    // );
-    // setIsGenerated(true);
+    if (
+      window.confirm(
+        "時間割を確定します。確定後は編集できません。本当によろしいですか？"
+      )
+    ) {
+      setShowLoading(true);
+
+      const timetableClone = clone(timetable);
+      const {
+        iso8601,
+        excludes,
+        monday,
+        tuesday,
+        wednesday,
+        thursday,
+        friday,
+        saturday,
+        sunday,
+      } = timetableClone;
+
+      const month = moment(iso8601);
+
+      const mondays = [];
+      const tuesdays = [];
+      const wednesdays = [];
+      const thursdays = [];
+      const fridays = [];
+      const saturdays = [];
+      const sundays = [];
+
+      for (let i = 1; i <= month.daysInMonth(); i++) {
+        if (excludes.find(the => the.date === i)) {
+          continue;
+        }
+
+        switch (month.date(i).day()) {
+          case 0: // sunday
+            sundays.push(i);
+            break;
+          case 1: // monday
+            mondays.push(i);
+            break;
+          case 2: // tuesday
+            tuesdays.push(i);
+            break;
+          case 3: // wednesday
+            wednesdays.push(i);
+            break;
+          case 4: // thursday
+            thursdays.push(i);
+            break;
+          case 5: // friday
+            fridays.push(i);
+            break;
+          case 6: // saturday
+            saturdays.push(i);
+            break;
+          default:
+            throw new Error("undefined day of week");
+        }
+      }
+
+      const lessonsOnMonday = mondays
+        .map(date => {
+          return monday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      const lessonOnTuesday = tuesdays
+        .map(date => {
+          return tuesday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      const lessonOnWednesday = wednesdays
+        .map(date => {
+          return wednesday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      const lessonsOnThursday = thursdays
+        .map(date => {
+          return thursday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      const lessonsOnFriday = fridays
+        .map(date => {
+          return friday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      const lessonOnSatuday = saturdays
+        .map(date => {
+          return saturday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      const lessonOnSunday = sundays
+        .map(date => {
+          return sunday.map(schedule =>
+            createLessonWith({
+              iso8601: month.date(date).format("YYYY-MM-DD"),
+              timeString: schedule.timeString,
+              lessonName: schedule.lessonName,
+              instructorName: schedule.instructorName,
+              capacity: schedule.capacity,
+            })
+          );
+        })
+        .flat();
+
+      lessonsOnMonday.forEach(lesson => {
+        cloudCreate(lesson);
+      });
+
+      setTimeout(() => {
+        lessonOnTuesday.forEach(lesson => {
+          cloudCreate(lesson);
+        });
+      }, 1000);
+
+      setTimeout(() => {
+        lessonOnWednesday.forEach(lesson => {
+          cloudCreate(lesson);
+        });
+      }, 2000);
+
+      setTimeout(() => {
+        lessonsOnThursday.forEach(lesson => {
+          cloudCreate(lesson);
+        });
+      }, 3000);
+
+      setTimeout(() => {
+        lessonsOnFriday.forEach(lesson => {
+          cloudCreate(lesson);
+        });
+      }, 4000);
+
+      setTimeout(() => {
+        lessonOnSatuday.forEach(lesson => {
+          cloudCreate(lesson);
+        });
+      }, 5000);
+
+      setTimeout(() => {
+        lessonOnSunday.forEach(lesson => {
+          cloudCreate(lesson);
+        });
+      }, 6000);
+
+      setTimeout(() => {
+        timetableClone.isGenerated = true;
+        cloudUpdate(timetableClone);
+        setShowLoading(false);
+      }, 7000);
+    }
   };
 
   return (
@@ -107,6 +314,7 @@ const Timetable = props => {
         setModalPayload={setModalPayload}
         timetable={timetable}
       />
+      <LoadingModal showLoading={showLoading} setShowLoading={setShowLoading} />
       <br />
     </div>
   );

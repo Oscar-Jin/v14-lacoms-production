@@ -2,7 +2,6 @@ import { fb } from "./config";
 import "firebase/firestore";
 import { parse, sync } from "./firekit";
 import { checkID } from "../toolkit/checker";
-import { julyTimetable } from "../template/timetable";
 
 export const db = fb.firestore();
 
@@ -14,17 +13,19 @@ const tickets = "tickets";
 const reservations = "reservations";
 const payments = "payments";
 const timetables = "timetables";
+const lessons = "lessons";
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ────────────────────────────────────────────────────────── リファレンス ───┐
 const collections = {
-  students: db.collection(students).orderBy("lastName_hiragana"),
-  memberships: db.collection(memberships).orderBy("iso8601"),
-  subscriptions: db.collection(subscriptions).orderBy("iso8601"),
-  tickets: db.collection(tickets).orderBy("type").orderBy("iso8601"),
-  reservations: db.collection(reservations).orderBy("iso8601"),
-  payments: db.collection(payments).orderBy("iso8601"),
+  // students: db.collection(students).orderBy("lastName_hiragana"),
+  // memberships: db.collection(memberships).orderBy("iso8601"),
+  // subscriptions: db.collection(subscriptions).orderBy("iso8601"),
+  // tickets: db.collection(tickets).orderBy("type").orderBy("iso8601"),
+  // reservations: db.collection(reservations).orderBy("iso8601"),
+  // payments: db.collection(payments).orderBy("iso8601"),
   timetables: db.collection(timetables).orderBy("iso8601"),
+  lessons: db.collection(lessons).orderBy("iso8601"),
 };
 // ────────────────────────────────────────────────────────────────────────┘
 
@@ -83,5 +84,5 @@ export const deleteDocsMatchUid = id => {
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ───────────────────────────────────────────────────────── playground ───┐
-// cloudCreate(julyTimetable);
+
 // ────────────────────────────────────────────────────────────────────────┘
