@@ -14,7 +14,6 @@ const SchedulePage = () => {
   const lessons = useSelector(selectLessons);
   const datesArray = createDateArray(lessons, month);
 
-  let timeStrings = ["XX:XX"];
   return (
     <div className="SchedulePage">
       <button disabled>7月</button>
@@ -24,6 +23,7 @@ const SchedulePage = () => {
       {datesArray.map(date => {
         const filtered = lessons.filter(lesson => lesson.iso8601 === date);
         sortLessons(filtered);
+        let timeStrings = ["XX:XX"];
         return (
           <div key={date} className="ScheduleSection">
             <h3 className={checkWhichWeekend(date)}>
