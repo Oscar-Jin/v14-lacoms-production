@@ -14,16 +14,13 @@ const SchedulePage = () => {
   const lessons = useSelector(selectLessons);
   const datesArray = createDateArray(lessons, month);
 
-  // moment.updateLocale("ja", {
-  //   weekdays: ["日", "月", "火", "水", "木", "金", "土"],
-  // });
-
   let timeStrings = ["XX:XX"];
   return (
     <div className="SchedulePage">
       <button disabled>7月</button>
       <button disabled>8月</button>
       <button disabled>9月</button>
+
       {datesArray.map(date => {
         const filtered = lessons.filter(lesson => lesson.iso8601 === date);
         sortLessons(filtered);
