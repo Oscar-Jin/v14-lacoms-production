@@ -4,6 +4,7 @@ import { useState } from "react";
 import { remove } from "lodash";
 import { cloudUpdate } from "../firebase/firestore";
 import { localzieCapacity } from "../select/CapacitySelect";
+import { checkLessonType } from "../page/SchedulePage";
 
 const clone = require("rfdc")();
 
@@ -66,7 +67,7 @@ const ScheduleTable = props => {
             return (
               <tr key={id} className={isOldSection ? "" : "border-top"}>
                 <td>{isOldSection ? "" : timeString}</td>
-                <td>{lessonName}</td>
+                <td className={checkLessonType(lessonName)}>{lessonName}</td>
                 <td>{instructorName}</td>
                 <td className="subtitle">{localzieCapacity(capacity)}</td>
                 <td className="subtitle">

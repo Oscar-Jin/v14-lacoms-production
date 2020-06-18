@@ -57,6 +57,7 @@ export const lessonSampleGHI = {
   lessonName: $lessonName.GHI,
   instructorName: $instructorName.神崎,
   capacity: 3,
+  regularsOnly: false,
 
   reservedBy: [],
 
@@ -77,12 +78,20 @@ export const createLessonWith = payload => {
     lessonName,
     instructorName,
     capacity,
+    regularsOnly,
     // defaults, can be overwritten
     createdBy = "lacoms",
     updatedBy = "lacoms",
   } = payload;
 
-  if (!iso8601 || !timeString || !lessonName || !instructorName || !capacity) {
+  if (
+    !iso8601 ||
+    !timeString ||
+    !lessonName ||
+    !instructorName ||
+    !capacity ||
+    regularsOnly === undefined
+  ) {
     throw new Error(
       "createLessonWith did not recieve all the properties it requires"
     );
@@ -103,6 +112,7 @@ export const createLessonWith = payload => {
     lessonName,
     instructorName,
     capacity,
+    regularsOnly,
     reservedBy: [],
     // meta info
     createdOn: new Date().toISOString(),

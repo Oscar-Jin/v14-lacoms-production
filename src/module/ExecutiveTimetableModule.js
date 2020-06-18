@@ -143,6 +143,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
@@ -157,6 +158,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
@@ -171,6 +173,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
@@ -185,6 +188,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
@@ -199,6 +203,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
@@ -213,6 +218,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
@@ -227,6 +233,7 @@ const Timetable = props => {
               lessonName: schedule.lessonName,
               instructorName: schedule.instructorName,
               capacity: schedule.capacity,
+              regularsOnly: schedule.regularsOnly,
             })
           );
         })
