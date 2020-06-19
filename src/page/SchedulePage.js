@@ -8,6 +8,8 @@ import { localzieCapacity } from "../select/CapacitySelect";
 import { localizeRegularsOnly } from "../table/ScheduleTable";
 import "../style/_schedulePage.scss";
 import { $lessonName } from "../template/lesson";
+import { Link } from "react-router-dom";
+import { student$info } from "./StudentPage";
 
 const SchedulePage = () => {
   const month = 7; // <-- override point
@@ -69,7 +71,18 @@ const SchedulePage = () => {
                       </td>
                       <td className="td-reservedBy-name">
                         {reservedBy.length
-                          ? reservedBy.map(entry => entry.name)
+                          ? reservedBy.map(entry => {
+                              const {
+                                lastName_kanji,
+                                firstName_kanji,
+                                uid,
+                              } = entry;
+                              return (
+                                <Link to={student$info + uid}>
+                                  {lastName_kanji} {firstName_kanji}
+                                </Link>
+                              );
+                            })
                           : ""}
                       </td>
                       <td>
