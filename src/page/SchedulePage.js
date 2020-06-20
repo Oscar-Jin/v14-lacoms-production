@@ -78,9 +78,11 @@ const SchedulePage = () => {
                                 uid,
                               } = entry;
                               return (
-                                <Link to={student$info + uid}>
-                                  {lastName_kanji} {firstName_kanji}
-                                </Link>
+                                <span style={{ marginRight: "1rem" }}>
+                                  <Link to={student$info + uid}>
+                                    {lastName_kanji} {firstName_kanji}
+                                  </Link>
+                                </span>
                               );
                             })
                           : ""}
