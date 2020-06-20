@@ -33,6 +33,13 @@ const ReactRouter = () => {
         <NavLink to={schedule}>Schedule</NavLink>
         <NavLink to={analytics}>Analytics</NavLink>
         <NavLink to={executive}>Executive</NavLink>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://lacoms-student-center.herokuapp.com/"
+        >
+          {"🎉Student Center"}
+        </a>
         <span>準備中です</span>
         <ButtonLogout />
         <BadgeServer />
