@@ -1,15 +1,18 @@
 import React from "react";
+
 import { useSelector } from "react-redux";
-import { filterTickets } from "../redux/selector";
+import { filterTickets, filterReservations } from "../redux/selector";
 import { $type } from "../template/ticket";
 
 const BadgeRemainingTickets = props => {
   const { id } = checkprops(props);
   const tickets = useSelector(state => filterTickets(state, id));
+  const reservations = useSelector(state => filterReservations(state, id));
 
   let unusedSinglePurchase = null;
   let unusedSubscriptionBundle = null;
   let unusedPastUnused = null;
+  let usedThisMonth = null;
 
   tickets.forEach(ticket => {
     if (!ticket.usedOn) {
@@ -25,6 +28,19 @@ const BadgeRemainingTickets = props => {
           break;
         default:
           throw new Error("undefined ticket type");
+      }
+    }
+    // <--- need to add logic here
+    if (ticket.usedOn) {
+      const thisYear = 2020;
+      const thisMonth = 7;
+      const reservation = reservations.find(rv => rv.id === ticket.usedOn);
+      if (
+        reservation &&
+        reservation.year === thisYear &&
+        reservation.month === thisMonth
+      ) {
+        usedThisMonth += 1;
       }
     }
   });
@@ -57,6 +73,15 @@ const BadgeRemainingTickets = props => {
         }}
       >
         {unusedPastUnused ? `整理券：${unusedPastUnused}` : ""}
+      </span>
+      <span
+        style={{
+          display: "inline-block",
+          minWidth: "5rem",
+          color: "darkgray",
+        }}
+      >
+        {usedThisMonth ? `使用：${usedThisMonth}` : ""}
       </span>
     </span>
   );
