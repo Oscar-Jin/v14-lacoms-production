@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
 import { useSelector } from "react-redux";
@@ -10,11 +10,21 @@ import "../style/_schedulePage.scss";
 import { $lessonName } from "../template/lesson";
 import { Link } from "react-router-dom";
 import { student$info } from "./StudentPage";
+import AddNewLessonModal from "../modal/AddNewLessonModal";
 
 const SchedulePage = () => {
   const month = 7; // <-- override point
   const lessons = useSelector(selectLessons);
   const datesArray = createDateArray(lessons, month);
+
+  const [payload, setPayload] = useState({});
+
+  const handleAdd = event => {
+    setPayload({
+      showAddLessonModal: true,
+      iso8601: event.target.dataset.date,
+    });
+  };
 
   return (
     <div className="SchedulePage">
@@ -78,7 +88,7 @@ const SchedulePage = () => {
                                 uid,
                               } = entry;
                               return (
-                                <span style={{ marginRight: "1rem" }}>
+                                <span style={{ marginRight: "1rem" }} key={uid}>
                                   <Link to={student$info + uid}>
                                     {lastName_kanji} {firstName_kanji}
                                   </Link>
@@ -95,12 +105,14 @@ const SchedulePage = () => {
                 })}
               </tbody>
             </table>
-            <button className="fr" disabled>
+            <button className="fr" data-date={date} onClick={handleAdd}>
               追加
             </button>
           </div>
         );
       })}
+
+      <AddNewLessonModal payload={payload} setPayload={setPayload} />
     </div>
   );
 };
