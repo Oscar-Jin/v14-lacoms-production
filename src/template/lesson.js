@@ -19,6 +19,7 @@ export const $lessonName = {
   L4: "L4",
   L5: "L5",
 
+  ONLINE: "ONLINE",
   ONLINE_E: "ONLINE_E",
   ONLINE_F: "ONLINE_F",
   ONLINE_GHI: "ONLINE_GHI",

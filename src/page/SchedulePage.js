@@ -173,6 +173,7 @@ export const checkLessonType = lessonName => {
     case $lessonName.E:
     case $lessonName.F:
     case $lessonName.GHI:
+    case $lessonName.ONLINE:
     case $lessonName.ONLINE_E:
     case $lessonName.ONLINE_F:
     case $lessonName.ONLINE_GHI:
