@@ -11,6 +11,7 @@ import { $lessonName } from "../template/lesson";
 import { Link } from "react-router-dom";
 import { student$info } from "./StudentPage";
 import AddNewLessonModal from "../modal/AddNewLessonModal";
+import EditLessonModal from "../modal/EditLessonModal";
 
 const SchedulePage = () => {
   const month = 7; // <-- override point
@@ -23,6 +24,13 @@ const SchedulePage = () => {
     setPayload({
       showAddLessonModal: true,
       iso8601: event.target.dataset.date,
+    });
+  };
+
+  const handleEdit = event => {
+    setPayload({
+      showEditLessonModal: true,
+      lessonID: event.target.dataset.lessonid,
     });
   };
 
@@ -51,6 +59,7 @@ const SchedulePage = () => {
                     capacity,
                     regularsOnly,
                     reservedBy,
+                    id,
                   } = lesson;
                   const isSame = timeString === timeStrings[i];
                   timeStrings.push(timeString);
@@ -98,7 +107,9 @@ const SchedulePage = () => {
                           : ""}
                       </td>
                       <td>
-                        <button disabled>編集</button>
+                        <button data-lessonid={id} onClick={handleEdit}>
+                          編集
+                        </button>
                       </td>
                     </tr>
                   );
@@ -113,6 +124,7 @@ const SchedulePage = () => {
       })}
 
       <AddNewLessonModal payload={payload} setPayload={setPayload} />
+      <EditLessonModal payload={payload} setPayload={setPayload} />
     </div>
   );
 };
