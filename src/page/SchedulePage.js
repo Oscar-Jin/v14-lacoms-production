@@ -183,6 +183,7 @@ export const checkLessonType = lessonName => {
     case $lessonName.L3:
     case $lessonName.L4:
     case $lessonName.L5:
+    case $lessonName.ONLINE_L1:
       return "LSP";
     default:
       return "";
