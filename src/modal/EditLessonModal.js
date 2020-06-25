@@ -4,7 +4,9 @@ import moment from "moment";
 import { style } from "./AddStudentModal";
 import { useSelector } from "react-redux";
 import { findLesson } from "../redux/selector";
-import { cloudDelete } from "../firebase/firestore";
+import { cloudDelete, cloudUpdate } from "../firebase/firestore";
+
+const clone = require("rfdc")();
 
 const EditLessonModal = props => {
   const { payload, setPayload } = props;
@@ -18,16 +20,19 @@ const EditLessonModal = props => {
     timeString,
     lessonName,
     instructorName,
+    capacity,
     reservedBy = [],
     id,
   } = lesson;
 
   const handleDelete = () => {
-    console.log(id);
-
-    if (window.confirm(`本当に${lessonName}を削除しますか？`)) {
-      cloudDelete(lesson);
-      handleClose();
+    if (reservedBy.length > 0) {
+      throw new Error("Class is alreay reserved by student");
+    } else {
+      if (window.confirm(`本当に${lessonName}クラスを削除しますか？`)) {
+        cloudDelete(lesson);
+        handleClose();
+      }
     }
   };
 
@@ -52,7 +57,7 @@ const EditLessonModal = props => {
           {instructorName}
         </h4>
         <button onClick={handleDelete} disabled={reservedBy.length > 0}>
-          {reservedBy.length > 0 ? "既に予約があります" : "削除する"}
+          {reservedBy.length > 0 ? "既に予約があります" : "クラスを削除する"}
         </button>
         <br />
         <div className="fr">
