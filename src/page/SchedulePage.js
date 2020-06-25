@@ -96,30 +96,8 @@ const SchedulePage = () => {
                           <span className="red">満席</span>
                         )}
                       </td>
-                      <td className="td-reservedBy-count">予約{count}名</td>
-                      {/* <td className="td-reservedBy-name">
-                        {reservedBy.length
-                          ? reservedBy.map(entry => {
-                              const {
-                                lastName_kanji,
-                                firstName_kanji,
-                                reservationID,
-                                uid,
-                              } = entry;
-                              return (
-                                <span
-                                  style={{ marginRight: "1rem" }}
-                                  key={reservationID}
-                                >
-                                  <Link to={student$info + uid}>
-                                    {lastName_kanji} {firstName_kanji}
-                                  </Link>
-                                </span>
-                              );
-                            })
-                          : ""}
-                      </td> */}
-                      <td className="td-reservedBy-name">
+                      <td className="td-reservation-count">予約{count}名</td>
+                      <td className="td-reservation-name">
                         {filtered.map(reservation => {
                           const {
                             lastName_kanji,
@@ -253,7 +231,7 @@ export const checkLessonType = lessonName => {
 //   );
 // };
 
-const reservationPackage = (reservations, lessonID) => {
+export const reservationPackage = (reservations, lessonID) => {
   const filtered = reservations.filter(
     RESERVATION => RESERVATION.lessonID === lessonID
   );
