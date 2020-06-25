@@ -80,7 +80,9 @@ const SchedulePage = () => {
                         {localzieCapacity(capacity)}
                       </td>
                       <td className="td-regularsOnly">
-                        {localizeRegularsOnly(regularsOnly)}
+                        <span className="subtitle">
+                          {regularsOnly && "レギュラーのみ"}
+                        </span>
                       </td>
                       <td className="td-seatsAvailable">
                         {reservedBy.length < capacity ? (
