@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import moment from "moment";
 
 import { useSelector } from "react-redux";
-import { selectLessons } from "../redux/selector";
+import { selectLessons, selectReservations } from "../redux/selector";
 import { tr } from "date-fns/locale";
 import { localzieCapacity } from "../select/CapacitySelect";
-import { localizeRegularsOnly } from "../table/ScheduleTable";
+// import { localizeRegularsOnly } from "../table/ScheduleTable";
 import "../style/_schedulePage.scss";
 import { $lessonName } from "../template/lesson";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ import EditLessonModal from "../modal/EditLessonModal";
 const SchedulePage = () => {
   const month = 7; // <-- override point
   const lessons = useSelector(selectLessons);
+  const reservations = useSelector(selectReservations);
   const datesArray = createDateArray(lessons, month);
 
   const [payload, setPayload] = useState({});
@@ -58,11 +59,15 @@ const SchedulePage = () => {
                     instructorName,
                     capacity,
                     regularsOnly,
-                    reservedBy,
                     id,
                   } = lesson;
+                  const { filtered, count } = reservationPackage(
+                    reservations,
+                    id
+                  );
                   const isSame = timeString === timeStrings[i];
                   timeStrings.push(timeString);
+
                   return (
                     <tr key={lesson.id}>
                       <td className="td-timeString">
@@ -85,16 +90,14 @@ const SchedulePage = () => {
                         </span>
                       </td>
                       <td className="td-seatsAvailable">
-                        {reservedBy.length < capacity ? (
+                        {count < capacity ? (
                           <span>空席あり</span>
                         ) : (
                           <span className="red">満席</span>
                         )}
                       </td>
-                      <td className="td-reservedBy-count">
-                        予約{reservedBy.length}名
-                      </td>
-                      <td className="td-reservedBy-name">
+                      <td className="td-reservedBy-count">予約{count}名</td>
+                      {/* <td className="td-reservedBy-name">
                         {reservedBy.length
                           ? reservedBy.map(entry => {
                               const {
@@ -115,6 +118,23 @@ const SchedulePage = () => {
                               );
                             })
                           : ""}
+                      </td> */}
+                      <td className="td-reservedBy-name">
+                        {filtered.map(reservation => {
+                          const {
+                            lastName_kanji,
+                            firstName_kanji,
+                            uid,
+                            id,
+                          } = reservation;
+                          return (
+                            <span style={{ marginRight: "1rem" }} key={id}>
+                              <Link to={student$info + uid}>
+                                {lastName_kanji} {firstName_kanji}
+                              </Link>
+                            </span>
+                          );
+                        })}
                       </td>
                       <td>
                         <button data-lessonid={id} onClick={handleEdit}>
@@ -210,6 +230,38 @@ export const checkLessonType = lessonName => {
     default:
       return "";
   }
+};
+
+// const findReservedStudents = (reservations, id) => {
+//   const filtered = reservations.filter(
+//     RESERVATION => RESERVATION.lessonID === id
+//   );
+
+//   return (
+//     <div>
+//       {filtered.map(reservation => {
+//         const { lastName_kanji, firstName_kanji, uid, id } = reservation;
+//         return (
+//           <span style={{ marginRight: "1rem" }} key={id}>
+//             <Link to={student$info + uid}>
+//               {lastName_kanji} {firstName_kanji}
+//             </Link>
+//           </span>
+//         );
+//       })}
+//     </div>
+//   );
+// };
+
+const reservationPackage = (reservations, lessonID) => {
+  const filtered = reservations.filter(
+    RESERVATION => RESERVATION.lessonID === lessonID
+  );
+
+  return {
+    filtered,
+    count: filtered ? filtered.length : 0,
+  };
 };
 
 // ────────────────────────────────────────────────────────────────────────┘
