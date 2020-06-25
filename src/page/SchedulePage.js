@@ -83,10 +83,14 @@ const SchedulePage = () => {
                         {localizeRegularsOnly(regularsOnly)}
                       </td>
                       <td className="td-seatsAvailable">
-                        {reservedBy.length < capacity ? "空席あり" : "満席"}
+                        {reservedBy.length < capacity ? (
+                          <span>空席あり</span>
+                        ) : (
+                          <span className="red">満席</span>
+                        )}
                       </td>
                       <td className="td-reservedBy-count">
-                        {reservedBy.length}名予約
+                        予約{reservedBy.length}名
                       </td>
                       <td className="td-reservedBy-name">
                         {reservedBy.length
@@ -94,10 +98,14 @@ const SchedulePage = () => {
                               const {
                                 lastName_kanji,
                                 firstName_kanji,
+                                reservationID,
                                 uid,
                               } = entry;
                               return (
-                                <span style={{ marginRight: "1rem" }} key={uid}>
+                                <span
+                                  style={{ marginRight: "1rem" }}
+                                  key={reservationID}
+                                >
                                   <Link to={student$info + uid}>
                                     {lastName_kanji} {firstName_kanji}
                                   </Link>
