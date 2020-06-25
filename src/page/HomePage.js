@@ -7,12 +7,15 @@ import AddStudentModal from "../modal/AddStudentModal";
 import ButtonShowRemoveStudent from "../button/StudentShowRemoveButton";
 import BadgeStudentCalcs from "../component/BadgeStudentCalcs";
 import ButtonAddStudent from "../button/StudentAddButton";
+import FilterMemberships from "../component/FilterMemberships";
 
 const HomePage = () => {
   return (
     <div className="HomePage">
       <FilterNames />
+      <FilterMemberships />
       <BadgeStudentCalcs />
+
       <ButtonAddStudent />
 
       <ButtonShowRemoveStudent />

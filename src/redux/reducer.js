@@ -146,7 +146,7 @@ export const user = (state = {}, { type, payload }) => {
 export const filter = (
   state = {
     studentName: { a: "あ", b: "か" },
-    studentMembership: null,
+    studentMembership: "all",
   },
   { type, payload }
 ) => {

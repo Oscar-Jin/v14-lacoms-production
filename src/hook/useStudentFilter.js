@@ -1,9 +1,19 @@
 import { useSelector } from "react-redux";
-import { selectStudents, selectStudentFilter } from "../redux/selector";
+import {
+  selectStudents,
+  selectStudentFilter,
+  selectMembershipsFilter,
+  selectMemberships,
+} from "../redux/selector";
+
+import last from "lodash/last";
 
 const useStudentFilter = () => {
   const students = useSelector(selectStudents);
+  const allMemberships = useSelector(selectMemberships);
+
   const filter = useSelector(selectStudentFilter);
+  const membersipFilter = useSelector(selectMembershipsFilter);
 
   const filteredStudents = students.filter(
     student =>
@@ -11,7 +21,19 @@ const useStudentFilter = () => {
       student.lastName_hiragana < filter.b
   );
 
-  return filteredStudents;
+  if (membersipFilter === "all") {
+    return filteredStudents;
+  } else {
+    const membershipFiltered = filteredStudents.filter(student => {
+      const memberships =
+        allMemberships.filter(membership => membership.uid === student.uid) ||
+        [];
+      const latest = last(memberships) || {};
+      return latest.status === membersipFilter;
+    });
+
+    return membershipFiltered;
+  }
 };
 
 export default useStudentFilter;

@@ -102,11 +102,26 @@ const SchedulePage = () => {
                           const {
                             lastName_kanji,
                             firstName_kanji,
+                            isFirstLesson,
+                            isNewStudent,
+                            isRegulars,
                             uid,
                             id,
                           } = reservation;
                           return (
-                            <span style={{ marginRight: "1rem" }} key={id}>
+                            <span
+                              style={{ marginRight: "1rem" }}
+                              key={id}
+                              className={
+                                isFirstLesson
+                                  ? "first-lesson"
+                                  : isNewStudent
+                                  ? "new-student"
+                                  : isRegulars
+                                  ? "regular-student"
+                                  : "nonregular-student"
+                              }
+                            >
                               <Link to={student$info + uid}>
                                 {lastName_kanji} {firstName_kanji}
                               </Link>
