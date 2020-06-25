@@ -130,7 +130,10 @@ const EditLessonModal = props => {
           既に予約されている状態でクラスの変更を行った場合、
           <br /> 元のクラスで予約している生徒も新しいクラスに変更されます。
         </p>
-        <br /> <br />
+        <p className="subtitle">
+          クラスを削除する場合、まずは「０名まで」に設定してください。
+        </p>
+        <br />
         <button onClick={handleDelete} disabled={count > 0}>
           {count > 0 ? "既に予約があります" : "削除する"}
         </button>
