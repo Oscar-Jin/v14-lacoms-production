@@ -30,6 +30,8 @@ export const findTimetable = (state, id) =>
   state.timetables.find(timetable => timetable.id === id) || {};
 export const findLesson = (state, id) =>
   state.lessons.find(lesson => lesson.id === id) || {};
+export const findReservation = (state, id) =>
+  state.reservations.find(resv => resv.id === id) || {};
 export const filterMemberships = (state, id) =>
   state.memberships.filter(mbshp => mbshp.uid === id) || [];
 export const filterSubscriptions = (state, id) =>

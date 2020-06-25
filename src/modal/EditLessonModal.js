@@ -8,8 +8,6 @@ import { cloudDelete, cloudUpdate } from "../firebase/firestore";
 import { reservationPackage } from "../page/SchedulePage";
 import { useEffect } from "react";
 import { useState } from "react";
-import WeekendTimeStringSelect from "../select/WeekendTimeStringSelect";
-import WeekdayTimeStringSelect from "../select/WeekdayTimeStringSelect";
 import LessonsNameSelect from "../select/LessonsNameSelect";
 import InstructorNameSelect from "../select/InstructorNameSelect";
 import CapacitySelect from "../select/CapacitySelect";
@@ -87,8 +85,8 @@ const EditLessonModal = props => {
         <span style={{ color: "darkgray" }}>LessonID:</span>
         <span
           style={{
-            display: "inline-block",
-            marginLeft: "1rem",
+            display: "block",
+
             fontSize: "1.2rem",
             color: "darkgray",
             fontWeight: "bold",

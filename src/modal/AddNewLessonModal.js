@@ -62,7 +62,7 @@ const AddNewLessonModal = props => {
         <p className="">
           授業の追加：
           <span className="subtitle">
-            月の時間割には反映されませんのでご注意ください。
+            月の時間割には表示されませんのでご注意ください。
           </span>
         </p>
         <hr />
