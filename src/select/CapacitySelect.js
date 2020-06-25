@@ -2,7 +2,7 @@ import React from "react";
 
 const CapacitySelect = props => {
   const { value, onChange } = checkprops(props);
-  const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <select
