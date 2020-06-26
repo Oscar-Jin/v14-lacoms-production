@@ -26,10 +26,28 @@ const EditReservationModal = props => {
     bot.innerText = "";
 
     if (targetLesson) {
+      const {
+        lessonName,
+        instructorName,
+        year,
+        month,
+        date,
+        hour,
+        minute,
+        iso8601,
+        timeString,
+      } = targetLesson;
       const reservationClone = clone(reservation);
+      reservationClone.year = year;
+      reservationClone.month = month;
+      reservationClone.date = date;
+      reservationClone.hour = hour;
+      reservationClone.minute = minute;
+      reservationClone.iso8601 = iso8601;
+      reservationClone.timeString = timeString;
       reservationClone.lessonID = lessonID;
-      reservationClone.lessonName = targetLesson.lessonName;
-      reservationClone.instructorName = targetLesson.instructorName;
+      reservationClone.lessonName = lessonName;
+      reservationClone.instructorName = instructorName;
 
       cloudUpdate(reservationClone);
       handleClose();
