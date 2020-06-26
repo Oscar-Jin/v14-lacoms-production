@@ -131,7 +131,9 @@ const EditLessonModal = props => {
           <br /> 元のクラスで予約している生徒も新しいクラスに変更されます。
         </p>
         <p className="subtitle">
-          クラスを削除する場合、まずは「０名まで」に設定してください。
+          安全にクラスの変更、削除を行うには、まずは人数制限を「０名まで」
+          <br />
+          に変更しててください。これで予約の受付を一時停止できます。
         </p>
         <br />
         <button onClick={handleDelete} disabled={count > 0}>
