@@ -60,7 +60,7 @@ const FilterMemberships = () => {
           checked={filter === "all"}
           onChange={e => setFilter(e.target.id)}
         />
-        <label htmlFor="all">全て</label>
+        <label htmlFor="all">全員を表示</label>
       </form>
     </div>
   );
