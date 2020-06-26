@@ -76,6 +76,11 @@ const EditReservationModal = props => {
           <br />
           ターゲット先のLessonIDを入力してください。
         </p>
+        <p className="subtitle red">
+          クラスの変更は同じ日の中で行ってください。
+          <br />
+          他の日に移動する時は、まず削除して、新しく予定を追加してください。
+        </p>
         <input
           type="text"
           value={lessonID}
