@@ -30,3 +30,15 @@
     background-color: whitesmoke;
   }
 }
+
+.bd-active {
+  border: 3px dashed green;
+}
+
+.bd-paused {
+  border: 3px dashed orange;
+}
+
+.bd-cancelled {
+  border: 3px dashed darkgray;
+}

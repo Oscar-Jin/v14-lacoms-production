@@ -9,11 +9,15 @@ import { student$info } from "../page/StudentPage";
 import useFindLatestMembership from "../hook/useFindLatestMembership";
 import "../style/_tableStudentAbstracts.scss";
 import { useSelector } from "react-redux";
-import { selectShowStudentRemove } from "../redux/selector";
+import {
+  selectShowStudentRemove,
+  selectMembershipsFilter,
+} from "../redux/selector";
 import BadgeRemainingTickets from "../component/BadgeRemainingTickets";
 
 const TableStudentAbstracts = () => {
   const students = useStudentFilter();
+  const membershipFilter = useSelector(selectMembershipsFilter);
   const shouldShowRemove = useSelector(selectShowStudentRemove);
   const findLatestMembership = useFindLatestMembership();
 
@@ -53,8 +57,8 @@ const TableStudentAbstracts = () => {
   });
 
   return (
-    <div className="TableStudentAbstracts">
-      <table>
+    <div className={"TableStudentAbstracts "}>
+      <table className={"bd-" + membershipFilter}>
         <thead>
           <tr>
             <th>ひらがな</th>
