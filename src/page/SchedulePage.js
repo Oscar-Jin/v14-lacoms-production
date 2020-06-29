@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import { student$info } from "./StudentPage";
 import AddNewLessonModal from "../modal/AddNewLessonModal";
 import EditLessonModal from "../modal/EditLessonModal";
+import { $status } from "../template/membership";
+import { $state } from "../module/StudentReservationModule";
 
 const SchedulePage = () => {
   const month = 7; // <-- override point
@@ -247,9 +249,22 @@ export const checkLessonType = lessonName => {
 // };
 
 export const reservationPackage = (reservations, lessonID) => {
-  const filtered = reservations.filter(
+  const firstFilter = reservations.filter(
     RESERVATION => RESERVATION.lessonID === lessonID
   );
+
+  const filtered = firstFilter.filter(RESERVATION => {
+    switch (RESERVATION.state) {
+      case $state.attended:
+        return true;
+      case $state.reserved:
+        return true;
+      case $state.noShow:
+        return true;
+      default:
+        return false;
+    }
+  });
 
   return {
     filtered,
