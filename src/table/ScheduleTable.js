@@ -22,6 +22,8 @@ const ScheduleTable = props => {
   const { timetable, dayOfWeek, setModalPayload } = props;
   const { isGenerated } = timetable;
 
+  const [shouldHide, setShouldHide] = useState(true);
+
   const handleAdd = event => {
     const dayOfWeek = event.target.dataset.dayofweek;
     setModalPayload({ dayOfWeek });
@@ -31,6 +33,10 @@ const ScheduleTable = props => {
     const dayOfWeek = event.target.dataset.dayofweek;
     const id = event.target.dataset.id;
     setModalPayload({ dayOfWeek, id });
+  };
+
+  const toggleShouldHide = () => {
+    setShouldHide(!shouldHide);
   };
 
   const handleRemove = event => {
@@ -51,6 +57,9 @@ const ScheduleTable = props => {
   return (
     <div key={dayOfWeek} className="weekly-table">
       <span>{localizeWeek(dayOfWeek)}</span>
+      <button onClick={toggleShouldHide} className="fr">
+        {shouldHide ? "Show" : "Hide All"}
+      </button>
       <table>
         <tbody>
           {timetable[dayOfWeek].map((schedule, i) => {
@@ -77,7 +86,7 @@ const ScheduleTable = props => {
                   <button
                     data-id={id}
                     data-dayofweek={dayOfWeek}
-                    hidden={isGenerated || inRemoveMode}
+                    hidden={(shouldHide && isGenerated) || inRemoveMode}
                     className="edit-button"
                     onClick={handleEdit}
                   >
@@ -86,7 +95,7 @@ const ScheduleTable = props => {
                   <button
                     data-id={id}
                     data-dayofweek={dayOfWeek}
-                    hidden={isGenerated || !inRemoveMode}
+                    hidden={(shouldHide && isGenerated) || !inRemoveMode}
                     className="remove-button"
                     onClick={handleRemove}
                   >
@@ -99,7 +108,7 @@ const ScheduleTable = props => {
         </tbody>
       </table>
       <button
-        hidden={isGenerated}
+        hidden={shouldHide && isGenerated}
         disabled={inRemoveMode}
         data-dayofweek={dayOfWeek}
         onClick={handleAdd}
@@ -107,7 +116,7 @@ const ScheduleTable = props => {
         + Add
       </button>
       <button
-        hidden={isGenerated}
+        hidden={shouldHide && isGenerated}
         onClick={() => setInRemoveMode(!inRemoveMode)}
       >
         {inRemoveMode ? "Cancel" : "Enable Remove"}

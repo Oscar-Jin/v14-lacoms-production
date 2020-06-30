@@ -74,7 +74,7 @@ const Timetable = props => {
   const handleGenerateLessons = () => {
     if (
       window.confirm(
-        "時間割を確定します。確定後は編集できません。本当によろしいですか？"
+        "時間割をベースにスケジュールを発行します。本当によろしいですか？"
       )
     ) {
       setShowLoading(true);
@@ -290,8 +290,12 @@ const Timetable = props => {
   return (
     <div className="Timetable">
       <h3>
-        {timetable.month}月時間割　{isGenerated ? "確定" : "確定前"}
+        {timetable.month}月時間割　{isGenerated ? "発行済" : "発行前"}
       </h3>
+      <p className="red">
+        {isGenerated &&
+          "スケジュールを既に発行済です。クラスの変更を行う場合、まずはクラスを個別追加する必要があります。こちらで変更してもスケジュールと連動しておりませんのでご注意ください（生徒予約画面の時間割のみに反映されます）"}
+      </p>
 
       <div>
         {weeks.map(dayOfWeek => {
@@ -314,7 +318,7 @@ const Timetable = props => {
         className="
       fr"
       >
-        {isGenerated ? "確定済" : "確定する"}
+        {isGenerated ? "発行済" : "発行する"}
       </button>
       <EditScheduleModal
         modalPayload={modalPayload}
