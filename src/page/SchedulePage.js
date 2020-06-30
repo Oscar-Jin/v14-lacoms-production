@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { student$info } from "./StudentPage";
 import AddNewLessonModal from "../modal/AddNewLessonModal";
 import EditLessonModal from "../modal/EditLessonModal";
-import { $status } from "../template/membership";
 import { $state } from "../module/StudentReservationModule";
 
 const SchedulePage = () => {

@@ -12,7 +12,10 @@ import ButtonActivateMembership from "../button/MembershipActivateButton";
 import ButtonPauseMembership from "../button/MembershipPauseButton";
 import { localizeStatus } from "../toolkit/localize";
 import ButtonCancelMembership from "../button/MembershipCancelButton";
-import { $status } from "../template/membership";
+import { $status, createMembershipWith } from "../template/membership";
+import { cloudCreate } from "../firebase/firestore";
+
+const clone = require("rfdc")();
 
 const StudentMembershipModule = () => {
   const { id } = useParams();
@@ -26,6 +29,28 @@ const StudentMembershipModule = () => {
   const dispatch = useDispatch();
   const handleAdd = () => {
     dispatch(showAddMembershipModal(true));
+  };
+
+  const handleRenew = () => {
+    const {
+      lastName_kanji,
+      firstName_kanji,
+      lastName_hiragana,
+      firstName_hiragana,
+      uid,
+      status,
+    } = latest;
+    const iso8601 = moment(latest.iso8601).add(1, "month").format("YYYY-MM-DD");
+    const membershipRenew = createMembershipWith({
+      lastName_kanji,
+      firstName_kanji,
+      lastName_hiragana,
+      firstName_hiragana,
+      uid,
+      iso8601,
+      status,
+    });
+    cloudCreate(membershipRenew);
   };
 
   return (
@@ -52,11 +77,17 @@ const StudentMembershipModule = () => {
         ) : diffInMonth ? (
           <div className="MembershipCard">
             <h2>Membership is Outdated</h2>
-            <p>Please renew the membership by clicking the add button below</p>
             <p>
+              Please renew the membership by clicking the Add or Renew button
+              below
+            </p>
+            <p style={{ display: "inline-block" }}>
               {moment(latest.iso8601).format("M月ステータス：")}{" "}
               {localizeStatus(latest.status)}
             </p>
+            <div className="fr" style={{ margin: "1rem" }}>
+              <button onClick={handleRenew}>Renew Membership</button>
+            </div>
           </div>
         ) : (
           <>

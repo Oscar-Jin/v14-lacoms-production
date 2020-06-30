@@ -1,0 +1,111 @@
+.ScheduleSection {
+  // border-top: 1px dashed gray;
+  margin-bottom: 3rem;
+
+  .weekday {
+    background-color: rgb(247, 247, 247);
+  }
+
+  .saturday {
+    border-bottom: 3px solid dodgerblue;
+    // color: dodgerblue;
+    background-color: whitesmoke;
+  }
+
+  .sunday {
+    border-bottom: 3px solid tomato;
+    // color: tomato;
+    background-color: whitesmoke;
+  }
+}
+
+.ScheduleTable {
+  border: 1px solid rgb(241, 241, 241);
+
+  td {
+    padding: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border: 1px dashed lightgray;
+  }
+
+  .td-timeString {
+    min-width: 3rem;
+  }
+  .td-lessonName {
+    min-width: 2.5rem;
+  }
+  .td-instructorName {
+    min-width: 3.5rem;
+  }
+  .td-capacity {
+    min-width: 4rem;
+  }
+  .td-regularsOnly {
+    min-width: 6rem;
+  }
+  .td-seatsAvailable {
+    min-width: 4.5rem;
+  }
+  .td-reservation-count {
+    min-width: 2.5rem;
+  }
+}
+
+.first-lesson {
+  button {
+    color: white;
+    background-color: rgb(235, 96, 119);
+    border: 1px solid rgb(235, 96, 119);
+  }
+}
+
+.new-student {
+  button {
+    color: white;
+    background-color: rgb(41, 133, 224);
+    border: 1px solid rgb(41, 133, 224);
+  }
+}
+
+.regular-student {
+  button {
+    color: rgb(60, 155, 23);
+  }
+}
+.nonregular-student {
+  button {
+    color: rgb(75, 110, 133);
+  }
+}
+
+.status-bar {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.should-do-comtan {
+  .the-border {
+    border: 3px dashed orange;
+  }
+
+  .status-bar {
+    color: orange;
+  }
+}
+
+.should-check-homework {
+  .the-border {
+    border: 3px dashed orange;
+  }
+
+  .status-bar {
+    color: orange;
+  }
+}
+
+.all-check-complete {
+  button {
+    color: lightgray;
+  }
+}
