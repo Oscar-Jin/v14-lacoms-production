@@ -104,6 +104,15 @@ const LessonPage = props => {
           <tbody>{schedules}</tbody>
         </table>
       </div>
+      <p>
+        ＊現時点で、当日キャンセルした生徒はこちらに表示されませんのでご注意ください。（内部ステート問題により）
+      </p>
+      <p>
+        ＊現時点で、Pole
+        Starは必要最低限の機能しか搭載されておりません。予定変更問題により、内部の大幅改修工事を行う必要があるためです。皆様に大変ご不便をおかけしますが、次回のアップデートまで今しばらくお待ちください。
+      </p>
+      <br />
+      <br />
       <EditStudentAttendanceModal
         modalPayload={modalPayload}
         setModalPayload={setModalPayload}
