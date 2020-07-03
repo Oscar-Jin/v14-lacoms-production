@@ -24,6 +24,8 @@ export const $lessonName = {
   ONLINE_F: "ONLINE_F",
   ONLINE_GHI: "ONLINE_GHI",
   ONLINE_L1: "ONLINE_L1",
+
+  自習: "自習",
 };
 
 export const $instructorName = {
