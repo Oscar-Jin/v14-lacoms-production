@@ -116,7 +116,7 @@ const EditStudentAttendanceModal = props => {
           <option value="60+">60+</option>
           <option value="50+">50+</option>
         </select>
-        <p className="red">
+        <p className="">
           COM単：○, △, ー 以外はCHECK COMPLETEと看做されません。
         </p>
         <br />
