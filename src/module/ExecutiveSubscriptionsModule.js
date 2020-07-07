@@ -7,7 +7,7 @@ import useFindLatestMembership from "../hook/useFindLatestMembership";
 import { localizeStatus } from "../toolkit/localize";
 import "../style/_executiveSubscriptionsModule.scss";
 import { Link } from "react-router-dom";
-import { student$info } from "../page/StudentPage";
+import { student$subscription } from "../page/StudentPage";
 
 const nowIso8601 = moment().date(1).format("YYYY-MM-DD");
 const nextIso8601 = moment().add(1, "month").date(1).format("YYYY-MM-DD");
@@ -26,11 +26,11 @@ const ExecutiveSubscriptionsModule = () => {
     const latestStatus = findLatestMembership(St.id)?.status;
     const hasPlanChange =
       nextMonthsPlan !== undefined && thisMonthsPlan !== nextMonthsPlan;
-    const indicator = { border: "2px solid orange" };
+    const indicator = { border: "3px solid orange" };
     return (
       <tr key={St.id}>
         <td>
-          <Link to={student$info + St.id}>
+          <Link to={student$subscription + St.id}>
             {St.lastName_kanji} {St.firstName_kanji}
           </Link>
         </td>
