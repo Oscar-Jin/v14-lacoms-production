@@ -34,14 +34,14 @@ const ReactRouter = () => {
         <NavLink to={schedule}>Schedule</NavLink>
         <NavLink to={analytics}>Analytics</NavLink>
         <NavLink to={executive}>Executive</NavLink>
-        <a
+        {/* <a
           target="_blank"
           rel="noopener noreferrer"
           href="https://lacoms-student-center.herokuapp.com/"
         >
           {"🎉Student Center"}
-        </a>
-        <span>準備中です</span>
+        </a> */}
+        <span>試験運用中</span>
         <ButtonLogout />
         <BadgeServer />
         <hr />
