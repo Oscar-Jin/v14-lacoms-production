@@ -287,10 +287,6 @@ const useChangePlanTo = plan => {
 };
 
 export const localizePlan = (plan, option) => {
-  if (!plan) {
-    throw new Error("plan must be provided");
-  }
-
   switch (plan) {
     case $plan.none:
       return "Pause / Halt (授業料止め)";
@@ -302,6 +298,8 @@ export const localizePlan = (plan, option) => {
       return "Fast（8）";
     case $plan.extremelyFast:
       return "Extremely Fast（12）";
+    case undefined:
+      return "no data";
     default:
       throw new Error("undefined plan type");
   }

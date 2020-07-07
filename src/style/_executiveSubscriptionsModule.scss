@@ -1,0 +1,22 @@
+.subscription-table {
+  border: 1px solid rgb(241, 241, 241);
+
+  td {
+    padding: 0.3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border: 1px dashed lightgray;
+  }
+
+  .active {
+    background-color: yellowgreen;
+  }
+
+  .paused {
+    background-color: rgb(255, 236, 204);
+  }
+
+  .cancelled {
+    background-color: whitesmoke;
+  }
+}
