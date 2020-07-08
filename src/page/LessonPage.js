@@ -187,7 +187,7 @@ const allCheckComplete = reservation => {
   let complete = false;
 
   if (state === $state.attended || state === $state.noShow) {
-    if (assignmentCheck !== "") {
+    if (assignmentCheck !== "" || assignmentCheck !== undefined) {
       if (comtanCheck === "◯" || comtanCheck === "△" || comtanCheck === "ー") {
         complete = true;
       }
