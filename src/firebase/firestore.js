@@ -14,6 +14,7 @@ const reservations = "reservations";
 const payments = "payments";
 const timetables = "timetables";
 const lessons = "lessons";
+const memos = "memos";
 // ────────────────────────────────────────────────────────────────────────┘
 
 // ────────────────────────────────────────────────────────── リファレンス ───┐
@@ -26,6 +27,7 @@ const collections = {
   payments: db.collection(payments).orderBy("iso8601"),
   timetables: db.collection(timetables).orderBy("iso8601"),
   lessons: db.collection(lessons).orderBy("iso8601"),
+  memos: db.collection(memos).orderBy("iso8601"),
 };
 // ────────────────────────────────────────────────────────────────────────┘
 

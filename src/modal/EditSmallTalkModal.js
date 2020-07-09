@@ -18,7 +18,7 @@ const EditSmallTalkModal = props => {
 
   const [smallTalk, setSmallTalk] = useState("");
   useEffect(() => {
-    setSmallTalk(lesson.smallTalk);
+    setSmallTalk(lesson?.smallTalk || "");
   }, [lesson]);
 
   const handleSave = () => {

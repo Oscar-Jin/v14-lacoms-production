@@ -1,3 +1,5 @@
+import { $memoType } from "../template/memo";
+
 export const selectStudents = state => state.students;
 export const selectMemberships = state => state.memberships;
 export const selectSubscriptions = state => state.subscriptions;
@@ -6,6 +8,7 @@ export const selectReservations = state => state.reservations;
 export const selectPayments = state => state.payments;
 export const selectTimetables = state => state.timetables;
 export const selectLessons = state => state.lessons;
+export const selectMemos = state => state.memos;
 
 export const selectStudentFilter = state => state.filter.studentName;
 export const selectMembershipsFilter = state => state.filter.studentMembership;
@@ -23,6 +26,8 @@ export const selectShowEditStudentModalBundle = state => {
   };
 };
 export const selectShowStudentRemove = state => state.show.studentRemoveButton;
+export const selectHeavensMemos = state =>
+  state.memos?.filter(M => M.memoType === $memoType.heavensMemoPad) || [];
 
 export const findStudent = (state, id) =>
   state.students.find(student => student.id === id) || {};

@@ -13,6 +13,7 @@ import { student$info } from "./StudentPage";
 import AddNewLessonModal from "../modal/AddNewLessonModal";
 import EditLessonModal from "../modal/EditLessonModal";
 import { $state } from "../module/StudentReservationModule";
+import HeavensMemoDisplay from "../component/HeavensMemoDisplay";
 
 const SchedulePage = () => {
   const month = 7; // <-- override point
@@ -51,6 +52,7 @@ const SchedulePage = () => {
             <h3 className={checkWhichWeekend(date)}>
               {date}　（{moment(date).format("dddd")}）
             </h3>
+            <HeavensMemoDisplay iso8601={date} />
             <table className="ScheduleTable">
               <tbody>
                 {filtered.map((lesson, i) => {

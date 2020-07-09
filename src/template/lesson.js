@@ -54,7 +54,7 @@ export const lessonSampleGHI = {
   hour: 13,
   minute: 0,
 
-  iso8601: moment("2020-07").format("YYYY-MM-DD"),
+  iso8601: moment("2020-07-06").format("YYYY-MM-DD"),
   timeString: moment().hour(13).minute(0).format("HH:mm"),
 
   // lesson
