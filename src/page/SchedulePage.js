@@ -49,7 +49,7 @@ const SchedulePage = () => {
         let timeStrings = ["XX:XX"];
         return (
           <div key={date} className="ScheduleSection">
-            <h3 className={checkWhichWeekend(date)}>
+            <h3 className={checkWhichWeekend(date)} style={{ marginBottom: 0 }}>
               {date}　（{moment(date).format("dddd")}）
             </h3>
             <HeavensMemoDisplay iso8601={date} />

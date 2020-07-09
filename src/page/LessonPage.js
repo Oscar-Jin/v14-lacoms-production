@@ -14,6 +14,7 @@ import EditStudentAttendanceModal from "../modal/EditStudentAttendanceModal";
 import { $state } from "../module/StudentReservationModule";
 import EditSmallTalkModal from "../modal/EditSmallTalkModal";
 import HeavensMemoDisplay from "../component/HeavensMemoDisplay";
+import { style } from "../modal/AddStudentModal";
 
 const LessonPage = props => {
   const lessons = useSelector(selectLessons);
@@ -98,7 +99,7 @@ const LessonPage = props => {
         <button className="fr" onClick={() => setHidebutton(!hideButton)}>
           {hideButton ? "Enable" : "Disable"}
         </button>
-        <h3 className={checkWhichWeekend(moment())}>
+        <h3 className={checkWhichWeekend(moment())} style={{ marginBottom: 0 }}>
           {moment().format("YYYY-MM-DD dddd")}
         </h3>
         <HeavensMemoDisplay iso8601={moment().format("YYYY-MM-DD")} />
