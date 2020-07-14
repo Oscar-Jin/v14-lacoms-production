@@ -9,6 +9,8 @@ import { cloudUpdate, cloudCreate } from "../firebase/firestore";
 import { $status } from "../template/membership";
 import { showAddSubscriptionModal } from "../redux/action";
 import AddSubscriptionModal from "../modal/AddSubscriptionModal";
+import { useState } from "react";
+import OverrideSubscriptionModal from "../modal/OverrideSubscriptionModal";
 
 const clone = require("rfdc")();
 
@@ -125,6 +127,15 @@ const SubscriptionHistory = () => {
   const { id } = useParams();
   const subscriptions = useSelector(state => filterSubscriptions(state, id));
 
+  const [modalPayload, setModalPayload] = useState({});
+
+  const handleOverride = event => {
+    setModalPayload({
+      showOverride: true,
+      id: event.target.dataset.id,
+    });
+  };
+
   return (
     <div className="SubscriptionHistory">
       <h3>Subscription History（サブスクリプション履歴）</h3>
@@ -141,11 +152,24 @@ const SubscriptionHistory = () => {
                 <td>
                   <button disabled>編集する</button>
                 </td>
+                <td>
+                  <button
+                    data-id={id}
+                    onClick={handleOverride}
+                    style={{ color: "red" }}
+                  >
+                    オーバーライド
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <OverrideSubscriptionModal
+        modalPayload={modalPayload}
+        setModalPayload={setModalPayload}
+      />
     </div>
   );
 };
