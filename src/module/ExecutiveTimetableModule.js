@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import short from "short-uuid";
 import { useState } from "react";
 import "../style/_executiveTimetableModule.scss";
 import { useSelector } from "react-redux";
@@ -44,6 +45,26 @@ export const $mode = {
 const ExecutiveTimetableModule = () => {
   const timetables = useSelector(selectTimetables);
 
+  const handleCopy = () => {
+    const lastTimetable = timetables[timetables.length - 1];
+    const lastTimetableClone = clone(lastTimetable);
+
+    const targetDate = moment(lastTimetable.iso8601).add(1, "month");
+
+    lastTimetableClone.year = targetDate.year();
+    lastTimetableClone.month = targetDate.month() + 1;
+    lastTimetableClone.iso8601 = targetDate.format("YYYY-MM-DD");
+
+    lastTimetableClone.excludes = [];
+    lastTimetableClone.isGenerated = false;
+
+    lastTimetableClone.createdOn = new Date();
+    lastTimetableClone.updatedOn = new Date();
+    lastTimetableClone.id = short.generate();
+
+    cloudCreate(lastTimetableClone);
+  };
+
   return (
     <div className="ExecutiveTimetableModule">
       {timetables.map(timetable => (
@@ -51,6 +72,8 @@ const ExecutiveTimetableModule = () => {
           <Timetable id={timetable.id} />
         </div>
       ))}
+      <br />
+      <button onClick={handleCopy}>Add New Timetable</button>
     </div>
   );
 };
