@@ -73,9 +73,7 @@ const ExecutiveTimetableModule = () => {
         </div>
       ))}
       <br />
-      <button onClick={handleCopy} disabled>
-        Add New Timetable
-      </button>
+      {/* <button onClick={handleCopy}>Add New Timetable</button> */}
     </div>
   );
 };
