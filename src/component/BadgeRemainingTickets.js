@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 import { useSelector } from "react-redux";
 import { filterTickets, filterReservations } from "../redux/selector";
@@ -9,13 +10,17 @@ const BadgeRemainingTickets = props => {
   const tickets = useSelector(state => filterTickets(state, id));
   const reservations = useSelector(state => filterReservations(state, id));
 
+  const targetIso8601 = "2020-07-01";
+
   let unusedSinglePurchase = null;
   let unusedSubscriptionBundle = null;
   let unusedPastUnused = null;
   let usedThisMonth = null;
 
   tickets.forEach(ticket => {
-    if (!ticket.usedOn) {
+    if (ticket.iso8601 > targetIso8601) {
+      // skip
+    } else if (!ticket.usedOn) {
       switch (ticket.type) {
         case $type.singlePurchase:
           unusedSinglePurchase += 1;
@@ -29,11 +34,9 @@ const BadgeRemainingTickets = props => {
         default:
           throw new Error("undefined ticket type");
       }
-    }
-    // <--- need to add logic here
-    if (ticket.usedOn) {
-      const thisYear = 2020;
-      const thisMonth = 7;
+    } else if (ticket.usedOn) {
+      const thisYear = moment(targetIso8601).year();
+      const thisMonth = moment(targetIso8601).month() + 1;
       const reservation = reservations.find(rv => rv.id === ticket.usedOn);
       if (
         reservation &&
