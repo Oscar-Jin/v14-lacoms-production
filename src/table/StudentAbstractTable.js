@@ -47,7 +47,10 @@ const TableStudentAbstracts = () => {
           {localizeStatus(findLatestMembership(id).status, "short")}
         </td>
         <td>
-          <BadgeRemainingTickets id={id} />
+          <BadgeRemainingTickets id={id} targetIso8601="2020-07-01" />
+        </td>
+        <td style={{ borderLeft: "1px solid gray" }}>
+          <BadgeRemainingTickets id={id} targetIso8601="2020-08-01" />
         </td>
         <td>
           <ButtonRemoveStudent id={id} />
@@ -67,6 +70,7 @@ const TableStudentAbstracts = () => {
             <th>年齢区分</th>
             <th>ステータス</th>
             <th>7月利用可能なチケット</th>
+            <th>8月利用可能なチケット</th>
             <th>{shouldShowRemove ? "削除" : ""}</th>
           </tr>
         </thead>

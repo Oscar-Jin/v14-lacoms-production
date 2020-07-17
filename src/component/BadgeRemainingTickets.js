@@ -6,11 +6,9 @@ import { filterTickets, filterReservations } from "../redux/selector";
 import { $type } from "../template/ticket";
 
 const BadgeRemainingTickets = props => {
-  const { id } = checkprops(props);
+  const { id, targetIso8601 } = checkprops(props);
   const tickets = useSelector(state => filterTickets(state, id));
   const reservations = useSelector(state => filterReservations(state, id));
-
-  const targetIso8601 = "2020-07-01";
 
   let unusedSinglePurchase = null;
   let unusedSubscriptionBundle = null;
@@ -94,10 +92,10 @@ export default BadgeRemainingTickets;
 
 // ────────────────────────────────────────────────────────────── check ───┐
 const checkprops = props => {
-  const { id } = props;
-  if (id === undefined) {
+  const { id, targetIso8601 } = props;
+  if (id === undefined || targetIso8601 === undefined) {
     throw new Error("id must be provided");
   }
-  return { id };
+  return { id, targetIso8601 };
 };
 // ────────────────────────────────────────────────────────────────────────┘
