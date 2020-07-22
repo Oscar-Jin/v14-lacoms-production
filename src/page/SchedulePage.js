@@ -16,10 +16,11 @@ import { $state } from "../module/StudentReservationModule";
 import HeavensMemoDisplay from "../component/HeavensMemoDisplay";
 
 const SchedulePage = () => {
-  const month = 7; // <-- override point
+  const [targetDate, setTargetDate] = useState(moment());
+
   const lessons = useSelector(selectLessons);
   const reservations = useSelector(selectReservations);
-  const datesArray = createDateArray(lessons, month);
+  const datesArray = createDateArray(lessons, targetDate);
 
   const [payload, setPayload] = useState({});
 
@@ -39,9 +40,24 @@ const SchedulePage = () => {
 
   return (
     <div className="SchedulePage">
-      <button disabled>7月</button>
-      <button disabled>8月</button>
-      <button disabled>9月</button>
+      <button
+        disabled={moment().subtract(1, "month").isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment().subtract(1, "month"))}
+      >
+        前月
+      </button>
+      <button
+        disabled={moment().isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment())}
+      >
+        今月
+      </button>
+      <button
+        disabled={moment().add(1, "month").isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment().add(1, "month"))}
+      >
+        来月
+      </button>
 
       {datesArray.map(date => {
         const filtered = lessons.filter(lesson => lesson.iso8601 === date);
@@ -159,14 +175,17 @@ export default SchedulePage;
 
 // ────────────────────────────────────────────────────────────── tools ───┐
 
-export const createDateArray = (lessons, month) => {
-  if (lessons === undefined || month === undefined) {
+export const createDateArray = (lessons, targetDate) => {
+  if (lessons === undefined || targetDate === undefined) {
     throw new Error("all props must be provided");
   }
   const datesObject = {};
 
+  const year = moment(targetDate).year();
+  const month = moment(targetDate).month() + 1;
+
   lessons.forEach((lesson, index) => {
-    if (lesson.month === month) {
+    if (lesson.year === year && lesson.month === month) {
       datesObject["_" + lesson.iso8601] = lesson.iso8601;
     }
   });
