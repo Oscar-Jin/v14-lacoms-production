@@ -38,6 +38,16 @@
   .td-instructorName {
     min-width: 3.5rem;
   }
+  .td-smallTalk {
+    min-width: 2rem;
+    max-width: 6rem;
+    font-size: 0.8rem;
+    color: dodgerblue;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .td-capacity {
     min-width: 4rem;
   }

@@ -76,6 +76,7 @@ const SchedulePage = () => {
                     timeString,
                     lessonName,
                     instructorName,
+                    smallTalk,
                     capacity,
                     regularsOnly,
                     id,
@@ -100,6 +101,7 @@ const SchedulePage = () => {
                         {lessonName}
                       </td>
                       <td className="td-instructorName">{instructorName}</td>
+                      <td className="td-smallTalk">{smallTalk}</td>
                       <td className="td-capacity">
                         {localzieCapacity(capacity)}
                       </td>
