@@ -211,8 +211,8 @@ const MARSTerminalModal = props => {
 };
 
 const SingleTicketVendor = () => {
-  const thisMonth = moment().format("YYYY-MM");
-  const nextMonth = moment().add(1, "month").format("YYYY-MM");
+  const thisMonth = moment("2020-08-15").format("YYYY-MM");
+  const nextMonth = moment("2020-08-15").add(1, "month").format("YYYY-MM");
   const [month, setMonth] = useState(thisMonth);
 
   return (
@@ -311,7 +311,7 @@ const ButtonIssueBundledTickets = props => {
     cloudUpdate(subscriptionCloned);
   };
 
-  const diffInDays = moment(iso8601).diff(moment(), "days");
+  const diffInDays = moment(iso8601).diff(moment("2020-08-15"), "days");
 
   console.log(diffInDays);
 

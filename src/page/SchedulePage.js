@@ -16,7 +16,7 @@ import { $state } from "../module/StudentReservationModule";
 import HeavensMemoDisplay from "../component/HeavensMemoDisplay";
 
 const SchedulePage = () => {
-  const [targetDate, setTargetDate] = useState(moment());
+  const [targetDate, setTargetDate] = useState(moment("2020-7-01"));
 
   const lessons = useSelector(selectLessons);
   const reservations = useSelector(selectReservations);
@@ -41,20 +41,24 @@ const SchedulePage = () => {
   return (
     <div className="SchedulePage">
       <button
-        disabled={moment().subtract(1, "month").isSame(targetDate, "month")}
-        onClick={() => setTargetDate(moment().subtract(1, "month"))}
+        disabled={moment("2020-08-15")
+          .subtract(1, "month")
+          .isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment("2020-08-15").subtract(1, "month"))}
       >
         前月
       </button>
       <button
-        disabled={moment().isSame(targetDate, "month")}
-        onClick={() => setTargetDate(moment())}
+        disabled={moment("2020-08-15").isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment("2020-08-15"))}
       >
         今月
       </button>
       <button
-        disabled={moment().add(1, "month").isSame(targetDate, "month")}
-        onClick={() => setTargetDate(moment().add(1, "month"))}
+        disabled={moment("2020-08-15")
+          .add(1, "month")
+          .isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment("2020-08-15").add(1, "month"))}
       >
         来月
       </button>

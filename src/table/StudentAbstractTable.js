@@ -49,13 +49,13 @@ const TableStudentAbstracts = () => {
         <td>
           <BadgeRemainingTickets
             id={id}
-            targetIso8601={moment().date(1).format("YYYY-MM-DD")}
+            targetIso8601={moment("2020-08-15").date(1).format("YYYY-MM-DD")}
           />
         </td>
         <td style={{ borderLeft: "1px solid gray" }}>
           <BadgeRemainingTickets
             id={id}
-            targetIso8601={moment()
+            targetIso8601={moment("2020-08-15")
               .add(1, "month")
               .date(1)
               .format("YYYY-MM-DD")}
@@ -78,8 +78,11 @@ const TableStudentAbstracts = () => {
             <th>性別</th>
             <th>年齢区分</th>
             <th>ステータス</th>
-            <th>{moment().month() + 1}月利用可能なチケット</th>
-            <th>{moment().add(1, "month").month() + 1}月利用可能なチケット</th>
+            <th>{moment("2020-08-15").month() + 1}月利用可能なチケット</th>
+            <th>
+              {moment("2020-08-15").add(1, "month").month() + 1}
+              月利用可能なチケット
+            </th>
             <th>{shouldShowRemove ? "削除" : ""}</th>
           </tr>
         </thead>
@@ -96,7 +99,7 @@ const simplifyAge = birthdate => {
     return "";
   }
 
-  const age = moment().diff(moment(birthdate), "years");
+  const age = moment("2020-08-15").diff(moment(birthdate), "years");
 
   if (age < 7) {
     return "幼児";

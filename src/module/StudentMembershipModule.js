@@ -23,7 +23,7 @@ const StudentMembershipModule = () => {
   const initial = memberships.find(membership => membership.isInitial === true);
   const latest = last(memberships) || {};
   const diffInMonth = latest.iso8601
-    ? moment().diff(moment(latest.iso8601), "months")
+    ? moment("2020-08-15").diff(moment(latest.iso8601), "months")
     : null;
 
   const dispatch = useDispatch();

@@ -16,7 +16,8 @@ const ButtonActivateMembership = () => {
   const { iso8601, status } = latest;
 
   const isSameMonth =
-    moment().format("YYYY-MM") === moment(iso8601).format("YYYY-MM");
+    moment("2020-08-15").format("YYYY-MM") ===
+    moment(iso8601).format("YYYY-MM");
 
   const activate = () => {
     if (isSameMonth) {

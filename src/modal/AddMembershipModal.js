@@ -70,7 +70,7 @@ const AddMembershipModal = () => {
     const initialMembership = memberships.find(
       membership => membership.isInitial === true
     );
-    const diffInDays = moment(date).diff(moment(), "days");
+    const diffInDays = moment(date).diff(moment("2020-08-15"), "days");
     const diff = initialMembership
       ? moment(initialMembership.iso8601).diff(date, "days")
       : null;

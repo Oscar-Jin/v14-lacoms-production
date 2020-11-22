@@ -77,7 +77,7 @@ const createTableRows = tickets => {
           <td>{expirationDate}</td>
           <td>
             {expirationDate
-              ? moment(expirationDate).diff(moment(), "day") + "日"
+              ? moment(expirationDate).diff(moment("2020-08-15"), "day") + "日"
               : ""}
           </td>
           <td>{id}</td>

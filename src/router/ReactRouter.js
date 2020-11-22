@@ -41,7 +41,7 @@ const ReactRouter = () => {
         >
           {"🎉Student Center"}
         </a> */}
-        <span>試験運用中</span>
+        <span>2020-08-15に設定</span>
         <ButtonLogout />
         <BadgeServer />
         <hr />

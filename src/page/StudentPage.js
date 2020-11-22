@@ -31,7 +31,9 @@ const StudentPage = () => {
         {lastName_kanji} {firstName_kanji}
       </h1>
       <span style={{ marginRight: "1rem" }}>
-        {birthdate ? moment().diff(moment(birthdate), "years") + "歳" : ""}
+        {birthdate
+          ? moment("2020-08-15").diff(moment(birthdate), "years") + "歳"
+          : ""}
       </span>
       <span>
         <NavLink to={student$info + id}>Info</NavLink>

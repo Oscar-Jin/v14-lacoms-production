@@ -19,11 +19,12 @@ const useFindLatestMembership = () => {
     if (latest.status === $status.cancelled) {
       return latest;
     } else if (
-      moment(latest.iso8601).format("YYYY-MM") === moment().format("YYYY-MM")
+      moment(latest.iso8601).format("YYYY-MM") ===
+      moment("2020-08-15").format("YYYY-MM")
     ) {
       return latest;
     } else {
-      return {};
+      return latest;
     }
   };
 };

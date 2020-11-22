@@ -7,7 +7,7 @@ export const scheduleTemplate1 = {
   // time
   hour: 13,
   minute: 0,
-  timeString: moment().hour(13).minute(0).format("HH:mm"),
+  timeString: moment("2020-08-15").hour(13).minute(0).format("HH:mm"),
   // lesson
   lessonName: $lessonName.GHI,
   instructorName: $instructorName.神崎,
@@ -131,8 +131,12 @@ export const createScheduleWith = payload => {
 
   return {
     // time
-    hour: moment(moment().format("YYYY-MM-DD") + " " + timeString).hour(),
-    minute: moment(moment().format("YYYY-MM-DD") + " " + timeString).minute(),
+    hour: moment(
+      moment("2020-08-15").format("YYYY-MM-DD") + " " + timeString
+    ).hour(),
+    minute: moment(
+      moment("2020-08-15").format("YYYY-MM-DD") + " " + timeString
+    ).minute(),
     timeString,
     // lesson
     lessonName,
