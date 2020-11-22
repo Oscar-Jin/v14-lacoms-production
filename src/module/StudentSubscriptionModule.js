@@ -195,11 +195,11 @@ const daysTillDeadLine = iso8601 => {
 
   const deadline = 10;
   const daysRemain = iso8601
-    ? moment("2020-08-15")
+    ? moment("2020-08-31")
         .year(moment(iso8601).year())
         .month(moment(iso8601).month() - 1)
         .date(deadline)
-        .diff(moment("2020-08-15"), "days")
+        .diff(moment("2020-08-31"), "days")
     : null;
 
   return daysRemain;

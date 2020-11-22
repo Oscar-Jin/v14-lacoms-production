@@ -14,10 +14,10 @@ export const $type = {
 export const calcExpirationDate = iso8601 => {
   const momth = moment(iso8601).month();
   return momth < 4
-    ? moment("2020-08-15").month(8).date(1).format("YYYY-MM-DD")
+    ? moment("2020-08-31").month(8).date(1).format("YYYY-MM-DD")
     : momth < 8
-    ? moment("2020-08-15").add(1, "y").month(0).date(1).format("YYYY-MM-DD")
-    : moment("2020-08-15").add(1, "y").month(4).date(1).format("YYYY-MM-DD");
+    ? moment("2020-08-31").add(1, "y").month(0).date(1).format("YYYY-MM-DD")
+    : moment("2020-08-31").add(1, "y").month(4).date(1).format("YYYY-MM-DD");
 };
 // ────────────────────────────────────────────────────────────────────────┘
 

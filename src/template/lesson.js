@@ -55,7 +55,7 @@ export const lessonSampleGHI = {
   minute: 0,
 
   iso8601: moment("2020-07-06").format("YYYY-MM-DD"),
-  timeString: moment("2020-08-15").hour(13).minute(0).format("HH:mm"),
+  timeString: moment("2020-08-31").hour(13).minute(0).format("HH:mm"),
 
   // lesson
   lessonName: $lessonName.GHI,

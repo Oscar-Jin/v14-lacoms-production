@@ -15,7 +15,7 @@ const ButtonCancelMembership = () => {
   const { iso8601, status } = last(memberships) || {};
 
   const isSameMonth =
-    moment("2020-08-15").format("YYYY-MM") ===
+    moment("2020-08-31").format("YYYY-MM") ===
     moment(iso8601).format("YYYY-MM");
 
   const cancel = () => {

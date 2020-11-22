@@ -100,13 +100,13 @@ const LessonPage = props => {
           {hideButton ? "Enable" : "Disable"}
         </button>
         <h3
-          className={checkWhichWeekend(moment("2020-08-15"))}
+          className={checkWhichWeekend(moment("2020-08-31"))}
           style={{ marginBottom: 0 }}
         >
-          {moment("2020-08-15").format("YYYY-MM-DD dddd")}
+          {moment("2020-08-31").format("YYYY-MM-DD dddd")}
         </h3>
         <HeavensMemoDisplay
-          iso8601={moment("2020-08-15").format("YYYY-MM-DD")}
+          iso8601={moment("2020-08-31").format("YYYY-MM-DD")}
         />
         <table className="ScheduleTable">
           <tbody>{schedules}</tbody>
@@ -140,7 +140,7 @@ export default LessonPage;
 
 const filterTodaysLessons = lessons => {
   const todaysLessons = lessons.filter(
-    lesson => lesson.iso8601 === moment("2020-08-15").format("YYYY-MM-DD")
+    lesson => lesson.iso8601 === moment("2020-08-31").format("YYYY-MM-DD")
   );
   const sorted = sortLessons(todaysLessons);
 

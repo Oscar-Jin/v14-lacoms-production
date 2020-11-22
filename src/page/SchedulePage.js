@@ -41,24 +41,24 @@ const SchedulePage = () => {
   return (
     <div className="SchedulePage">
       <button
-        disabled={moment("2020-08-15")
+        disabled={moment("2020-08-31")
           .subtract(1, "month")
           .isSame(targetDate, "month")}
-        onClick={() => setTargetDate(moment("2020-08-15").subtract(1, "month"))}
+        onClick={() => setTargetDate(moment("2020-08-31").subtract(1, "month"))}
       >
         前月
       </button>
       <button
-        disabled={moment("2020-08-15").isSame(targetDate, "month")}
-        onClick={() => setTargetDate(moment("2020-08-15"))}
+        disabled={moment("2020-08-31").isSame(targetDate, "month")}
+        onClick={() => setTargetDate(moment("2020-08-31"))}
       >
         今月
       </button>
       <button
-        disabled={moment("2020-08-15")
+        disabled={moment("2020-08-31")
           .add(1, "month")
           .isSame(targetDate, "month")}
-        onClick={() => setTargetDate(moment("2020-08-15").add(1, "month"))}
+        onClick={() => setTargetDate(moment("2020-08-31").add(1, "month"))}
       >
         来月
       </button>

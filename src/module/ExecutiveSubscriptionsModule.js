@@ -14,8 +14,8 @@ import { Link } from "react-router-dom";
 import { student$subscription } from "../page/StudentPage";
 import { $type } from "../template/ticket";
 
-const nowIso8601 = moment("2020-08-15").date(1).format("YYYY-MM-DD");
-const nextIso8601 = moment("2020-08-15")
+const nowIso8601 = moment("2020-08-31").date(1).format("YYYY-MM-DD");
+const nextIso8601 = moment("2020-08-31")
   .add(1, "month")
   .date(1)
   .format("YYYY-MM-DD");
@@ -83,9 +83,9 @@ const ExecutiveSubscriptionsModule = () => {
           <tr>
             <th>生徒</th>
             <th>ステータス</th>
-            <th>{moment("2020-08-15").month() + 1}月</th>
+            <th>{moment("2020-08-31").month() + 1}月</th>
             <th>補講</th>
-            <th>{moment("2020-08-15").add(1, "month").month() + 1}月</th>
+            <th>{moment("2020-08-31").add(1, "month").month() + 1}月</th>
             <th>補講</th>
           </tr>
         </thead>

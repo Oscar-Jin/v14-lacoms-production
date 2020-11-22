@@ -32,7 +32,7 @@ const StudentPage = () => {
       </h1>
       <span style={{ marginRight: "1rem" }}>
         {birthdate
-          ? moment("2020-08-15").diff(moment(birthdate), "years") + "歳"
+          ? moment("2020-08-31").diff(moment(birthdate), "years") + "歳"
           : ""}
       </span>
       <span>
