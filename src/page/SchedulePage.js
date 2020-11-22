@@ -16,7 +16,7 @@ import { $state } from "../module/StudentReservationModule";
 import HeavensMemoDisplay from "../component/HeavensMemoDisplay";
 
 const SchedulePage = () => {
-  const [targetDate, setTargetDate] = useState(moment("2020-7-01"));
+  const [targetDate, setTargetDate] = useState(moment("2020-08-31"));
 
   const lessons = useSelector(selectLessons);
   const reservations = useSelector(selectReservations);
