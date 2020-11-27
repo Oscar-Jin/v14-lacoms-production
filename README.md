@@ -27,3 +27,8 @@ npm run start
 
 * Website: https://oscar-jin.surge.sh
 * Github: [@Oscar-Jin](https://github.com/Oscar-Jin)
+
+
+## Licence 
+
+MIT
