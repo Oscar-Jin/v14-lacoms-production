@@ -5,7 +5,7 @@ An comprehensive admin app designed for managing students from scheduling new cl
 
 ## Demo
 
-[Lacoms-Hub](https://preview-pole-star.surge.sh)
+[Lacoms Pole Star](https://preview-pole-star.surge.sh)
 
 <img src="https://oscar-jin.surge.sh/static/0bb737b8b15c50fda19aa81a38d04af0/5707d/pole-star.png">
 
